@@ -1,0 +1,3915 @@
+{
+  "metadata": {
+    "name": "Ulysses-MTRAG",
+    "version": "0.1.0-synthetic",
+    "description": "Synthetic multi-turn legislative RAG benchmark. Extension of Ulysses-RFCorpus (Vitório et al., LRE 2024). Methodology: MTRAG-synthetic (Katsis et al., TACL 2025).",
+    "n_conversations": 100,
+    "n_turns_per_conv": 4,
+    "generator_model": "qwen/qwen-2.5-72b-instruct",
+    "judge_model": "phi3:medium",
+    "base_corpus": "Ulysses-RFCorpus (Vitório et al., 2024)",
+    "license": "CC BY 4.0 (same as base corpus)"
+  },
+  "conversations": [
+    {
+      "session_id": "ulysses_mt_0000",
+      "topic_cluster": 0,
+      "seed_query_id": "15",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito alterar a Lei 12.249 de 11 de junho de 2010 no que se refere a  criação no perímetro desafetado, uma Área de Proteção Ambiental - APA e uma Floresta Estadual.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Para melhor direcionar a pesquisa, poderia informar se há alguma proposição específica em tramitação que visa a alteração da Lei 12.249/2010 para a criação de uma Área de Proteção Ambiental (APA) e uma Floresta Estadual no perímetro desafetado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Poderia especificar em qual estado e região geográfica essa Área de Proteção Ambiental (APA) e a Floresta Estadual seriam criadas, conforme a proposição que pretende alterar a Lei 12.249/2010?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Poderia fornecer detalhes sobre os principais argumentos e justificativas apresentados nas proposições que visam a alteração da Lei 12.249/2010 para a criação da Área de Proteção Ambiental (APA) e da Floresta Estadual no perímetro desafetado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0001",
+      "topic_cluster": 1,
+      "seed_query_id": "392",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Criação de fundo para prevenção de desastres naturais e e recuperação de seus efeitos, para apoio financeiro aos estados e aos municípios afetados.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e mecanismos de distribuição dos recursos do fundo para prevenção de desastres naturais e recuperação de seus efeitos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Em quais situações específicas os recursos do fundo para prevenção de desastres naturais e recuperação de seus efeitos seriam liberados?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Como são definidas as prioridades para a alocação de recursos do fundo em situações de múltiplos desastres naturais simultâneos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0002",
+      "topic_cluster": 2,
+      "seed_query_id": "20",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Gostaria de pedir à Consultoria a elaboração de projeto para excetuar a saúde e a educação do limite de gastos com pessoal. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Qual é a base legal atual que estabelece os limites de gastos com pessoal para os entes federativos, e como essa base legal poderia ser afetada pela exceção proposta para saúde e educação?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os possíveis impactos orçamentários e fiscais de se excetuar a saúde e a educação do limite de gastos com pessoal, conforme previsto na legislação atual?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais são os principais projetos de lei propostos nos últimos cinco anos que buscam excetuar a saúde e a educação do limite de gastos com pessoal, e quais foram os resultados desses projetos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0003",
+      "topic_cluster": 3,
+      "seed_query_id": "22",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "altera a emissão e distribuição de valores mobiliários no mercado.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais requisitos e condições estabelecidos para a emissão e distribuição de valores mobiliários no mercado, conforme propostas legislativas recentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais mudanças propostas nas regras de registro e divulgação de informações para a emissão e distribuição de valores mobiliários no mercado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Como essas mudanças impactam a responsabilidade das empresas emissoras e dos intermediários financeiros envolvidos no processo de emissão e distribuição de valores mobiliários?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0004",
+      "topic_cluster": 4,
+      "seed_query_id": "441",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar um projeto de lei que o apostador de jogos em loterias, deverá fornecer o seu CPF e telefone ou e-mail, de modo que seja avisado pelos canais oficias, em resgatar o seu prêmio, no prazo estipulado de 90 dias. Neste caso, ele não precisará apresentar o original, se fornecido o CPF no momento da aposta. Ficando dessa forma, o prêmio nominal ao seu ganhador.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais seriam as implicações práticas e legais de implementar essas medidas no processo de resgate de prêmios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais seriam os impactos na privacidade do apostador e nos sistemas de segurança da Caixa Econômica Federal com a implementação dessa medida?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como a implementação dessas medidas afetará a estrutura de custos e a operacionalização dos sistemas de loteria da Caixa Econômica Federal?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0005",
+      "topic_cluster": 5,
+      "seed_query_id": "691",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "O Deputado Daniel Sarmento solicita consulta indagando os seguintes pontos:\n- quais as regras distribuição do Fundo Partidário?\n- quais as regras de distribuição do Fundo Especial de Financiamento de Campanha?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Essas regras são aplicadas de maneira uniforme para todos os partidos políticos, ou existem exceções?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os critérios específicos para a distribuição do Fundo Partidário entre os partidos políticos, e como esses critérios podem variar em situações excepcionais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais são os critérios específicos para a distribuição do Fundo Partidário entre os partidos políticos nos últimos cinco anos, e como esses critérios podem variar em situações excepcionais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0006",
+      "topic_cluster": 6,
+      "seed_query_id": "351",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "A deputada gostaria de solicitar um pl para melhorar a segurança dos torcedores nos estádios, pois tem havido muitas brigas e confusões e as famílias não estão podendo frequentar.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes que tratam da segurança dos torcedores nos estádios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais medidas específicas foram propostas nas legislações mais recentes para prevenir brigas e confusões entre torcedores nos estádios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais mecanismos de fiscalização e punição foram estabelecidos nas proposições legislativas mais recentes para garantir a segurança dos torcedores nos estádios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0007",
+      "topic_cluster": 7,
+      "seed_query_id": "27",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Para criar uma lei geral dos conselhos de fiscalização profissional ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Qual é o histórico legislativo das propostas que tratam da criação de uma lei geral para os conselhos de fiscalização profissional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Há alguma proposta específica que tenha avançado significativamente no processo legislativo ou que tenha recebido maior destaque na discussão sobre a criação de uma lei geral para os conselhos de fiscalização profissional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram os principais argumentos e contrapontos apresentados nas discussões das propostas que tiveram maior destaque para a criação de uma lei geral dos conselhos de fiscalização profissional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0008",
+      "topic_cluster": 8,
+      "seed_query_id": "52",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Favor elaborar projeto de decreto legislativo para sustar os efeitos da Portaria 666, de 2019, que dispõe sobre o impedimento de ingresso, a repatriação e a deportação sumária de pessoa perigosa ou que tenha praticado ato contrário aos princípios e objetivos dispostos na Constituição Federal.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare a Portaria 666/2019 com a legislação vigente anterior à sua publicação, destacando as principais diferenças nos critérios para impedimento de ingresso, repatriação e deportação sumária.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais são os principais dispositivos da legislação vigente anterior à Portaria 666/2019 que regem o impedimento de ingresso, a repatriação e a deportação sumária, e como esses dispositivos foram alterados pela Portaria 666/2019?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como a Portaria 666/2019 alterou os critérios de avaliação da periculosidade e da prática de atos contrários aos princípios constitucionais, em comparação com a legislação anterior?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0009",
+      "topic_cluster": 9,
+      "seed_query_id": "725",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar Projeto de Lei para permitir a posse e o porte de armas de fogo para os advogados que estejam no regular exercício da profissão.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os critérios de segurança e treinamento que devem ser estabelecidos para os advogados que desejam obter a posse e o porte de armas de fogo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare os requisitos de segurança e treinamento para a posse e o porte de armas de fogo entre advogados e policiais militares. Quais são as principais diferenças e similaridades?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais aspectos da formação em segurança e tiro que os advogados deveriam completar para obter a posse e o porte de armas de fogo, e como esses aspectos se comparam às exigências para os policiais militares?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0010",
+      "topic_cluster": 10,
+      "seed_query_id": "599",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "3-\tReduzir a maioridade penal para menos de 18 anos.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos a favor e contra a redução da maioridade penal para menos de 18 anos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais implicações sociais e psicológicas da redução da maioridade penal para menores de 18 anos, segundo os estudos e pesquisas recentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as principais críticas e recomendações dos especialistas em psicologia e sociologia quanto aos efeitos da redução da maioridade penal sobre a reintegração social de jovens infratores?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0011",
+      "topic_cluster": 11,
+      "seed_query_id": "40",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar projeto de lei que discipline a classificação indicativa para mostras culturais e exposições de artes ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os critérios atuais utilizados para a classificação indicativa de mostras culturais e exposições de artes no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Poderia detalhar quais são os órgãos ou entidades responsáveis pela aplicação desses critérios de classificação indicativa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Esses órgãos ou entidades possuem regulamentações específicas para a aplicação dos critérios de classificação indicativa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0012",
+      "topic_cluster": 12,
+      "seed_query_id": "249",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaboração de proposição que condicione a matrícula em escola pública a estar com vacinação atualizada das crianças",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes que condicionam a matrícula em escola pública à vacinação atualizada das crianças?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes de 2020 em diante que condicionam a matrícula em escola pública à vacinação atualizada das crianças?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram os resultados das votações e o andamento atual das proposições legislativas mais recentes de 2020 em diante que condicionam a matrícula em escola pública à vacinação atualizada das crianças?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0013",
+      "topic_cluster": 13,
+      "seed_query_id": "422",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicitamos a elaboração de projeto de lei proibindo o assédio moral nas relações de trabalho.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Gostaria de esclarecer se a proibição do assédio moral abrangerá todas as formas de relacionamento laboral, incluindo vínculos de trabalho intermitente e terceirizados?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Gostaria de saber se a proposta de projeto de lei também contemplará medidas preventivas e punitivas específicas, além da proibição do assédio moral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais órgãos ou entidades serão responsáveis pela fiscalização e aplicação das medidas preventivas e punitivas previstas no projeto de lei contra o assédio moral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0014",
+      "topic_cluster": 14,
+      "seed_query_id": "528",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Dar anistia aos estudantes para as dívidas do Fies.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes tratam da anistia para dívidas do Fies?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes, de 2020 em diante, tratam da anistia para dívidas do Fies?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as principais justificativas apresentadas nas proposições legislativas de 2020 em diante que tratam da anistia para dívidas do Fies?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0015",
+      "topic_cluster": 15,
+      "seed_query_id": "714",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar Projeto de Lei para prever os postos de oficiais-generais nas Polícias Militares e nos Corpos de Bombeiros Militares.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais são as implicações organizacionais e estruturais da implementação desses postos de oficiais-generais nas instituições mencionadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais são as principais diferenças entre a estrutura atual das Polícias Militares e dos Corpos de Bombeiros Militares em relação à hierarquia e aos postos ocupados pelos oficiais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Como as legislações estaduais atuais tratam a promoção e a ocupação dos postos mais elevados nas Polícias Militares e nos Corpos de Bombeiros Militares?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0016",
+      "topic_cluster": 16,
+      "seed_query_id": "282",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Vedar a oferta de cursos superiores na modalidade EAD para a área de saúde",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários à vedação da oferta de cursos superiores na modalidade EAD para a área de saúde?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Qual é a amplitude do termo 'área de saúde' utilizado na proposição? Inclui todas as profissões regulamentadas pelo Ministério da Saúde ou há uma definição mais específica?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "A proposição menciona algum critério específico para definir quais cursos superiores na área de saúde estariam abrangidos pela vedação, ou a definição é deixada à interpretação do Ministério da Saúde?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0017",
+      "topic_cluster": 17,
+      "seed_query_id": "203",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito a elaboração de projeto de lei para permitir o uso do FGTS para o pagamento de mensalidade escolar",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários ao uso do FGTS para o pagamento de mensalidade escolar?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os impactos financeiros e econômicos potenciais do uso do FGTS para o pagamento de mensalidades escolares, tanto para os trabalhadores quanto para o sistema do FGTS?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os possíveis efeitos do uso do FGTS para o pagamento de mensalidades escolares sobre o mercado imobiliário e o acesso à moradia?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0018",
+      "topic_cluster": 18,
+      "seed_query_id": "549",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Torna obrigatória estabelece multas em caso de descumprimento da classificação indicativa para manifestações culturais que agridam os valores da família.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os critérios específicos para definir se uma manifestação cultural agride os valores da família, conforme proposto nesta legislação?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as penalidades previstas para os responsáveis por manifestações culturais que descumprirem a classificação indicativa estabelecida pela legislação?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Essas penalidades podem ser aplicadas de forma retroativa, ou somente a partir da vigência da lei?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0019",
+      "topic_cluster": 19,
+      "seed_query_id": "241",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar projeto de lei ampliando o prazo da licença paternidade",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os atuais critérios e condições para a concessão da licença-paternidade no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Quais são as principais justificativas e argumentos utilizados em propostas legislativas anteriores que buscaram alterar esses critérios e condições?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais impactos socioeconômicos e de saúde que foram destacados em estudos ou proposições legislativas anteriores relacionados à ampliação do prazo da licença-paternidade?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0020",
+      "topic_cluster": 20,
+      "seed_query_id": "123",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Consulta sobre juros praticados nos cartões de crédito.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são as principais legislações federais que regulam os juros praticados nos cartões de crédito no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare as regras estabelecidas pela Lei 10.931/2004 e pelo Decreto 6.538/2008 em relação aos limites e controles dos juros praticados nos cartões de crédito no Brasil.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as principais diferenças entre as penalidades e sanções previstas na Lei 10.931/2004 e no Decreto 6.538/2008 para as instituições financeiras que não cumprirem as regras de controle e limites dos juros nos cartões de crédito?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0021",
+      "topic_cluster": 21,
+      "seed_query_id": "631",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "AUMENTAR O PRAZO DE INTERNAÇÃO NOS ATOS INFRACIONAIS EQUIPARADOS A CRIMES HEDIONDOS",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Quais são as principais diferenças entre os prazos de internação para atos infracionais equiparados a crimes hediondos e para outros atos infracionais graves?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Poderia especificar quais são os prazos atuais de internação para atos infracionais equiparados a crimes hediondos e para outros atos infracionais graves, para que eu possa compará-los mais claramente?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as justificativas e os argumentos principais apresentados pelos proponentes da medida que visa aumentar o prazo de internação para atos infracionais equiparados a crimes hediondos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0022",
+      "topic_cluster": 22,
+      "seed_query_id": "715",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Alterações na Lei de Regularização Fundiária , Lei 11.952/19, para: Permitir a regularização de terras em todo o Brasil, e não só na Amazônia Legal. \n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "A Lei 11.952/19, como atualmente redigida, tem seu foco exclusivamente na regularização fundiária na Amazônia Legal? Se sim, quais são os principais obstáculos para a extensão dessas medidas a outras regiões do Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes (de 2020 em diante) buscam ampliar a aplicação da Lei 11.952/19 para permitir a regularização fundiária em todo o Brasil, e não apenas na Amazônia Legal?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais foram os principais debates e conclusões no âmbito da Câmara dos Deputados sobre essas proposições?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0023",
+      "topic_cluster": 23,
+      "seed_query_id": "335",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito projeto de lei para conceder incentivos à instalação de pontos de recarga de baterias de veículos elétricos.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os tipos de incentivos fiscais e não fiscais que poderiam ser oferecidos para incentivar a instalação de pontos de recarga de veículos elétricos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Quais seriam os principais benefícios esperados com a implementação desses incentivos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais seriam os impactos ambientais e econômicos diretos e indiretos da implementação desses incentivos, considerando tanto os benefícios quanto os possíveis desafios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0024",
+      "topic_cluster": 24,
+      "seed_query_id": "541",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Estabelecer equivalência automática de diplomas para países do Mercosul e para Portugal, sem que seja necessário reconhecer os diplomas de nível superior destes países no Brasil.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare os processos de reconhecimento de diplomas de países do Mercosul com aqueles de Portugal, identificando quais são as principais diferenças e similaridades nesses processos.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Investigue as possíveis implicações legais e regulatórias da equivalência automática de diplomas para países do Mercosul e Portugal, com foco nos impactos sobre o mercado de trabalho e a qualidade da educação superior no Brasil.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Analise a possibilidade de conflitos entre a equivalência automática de diplomas e as normas específicas de órgãos reguladores de profissões no Brasil, como o Conselho Federal de Medicina e o Conselho Federal de Engenharia e Agronomia.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0025",
+      "topic_cluster": 25,
+      "seed_query_id": "157",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Impedir a retirada de conteúdo da internet sem ordem judicial. Muitas plataformas de internet utilizam seus termos de serviço para retirarem conteúdo de suas redes, o que é contrário à liberdade de expressão. As plataformas, em especial as redes sociais, se tornaram arenas públicas de debate.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes tratam da questão de impedir a retirada de conteúdo da internet sem ordem judicial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos apresentados nas proposições legislativas mais recentes que visam impedir a retirada de conteúdo da internet sem ordem judicial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os argumentos apresentados nas proposições legislativas que visam impedir a retirada de conteúdo da internet sem ordem judicial com os argumentos utilizados em proposições que defendem a moderação de conteúdo pelas plataformas.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0026",
+      "topic_cluster": 26,
+      "seed_query_id": "493",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de lei versando sobre descarte de medicamentos vencidos.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são as principais medidas previstas no projeto de lei para o descarte seguro de medicamentos vencidos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os critérios estabelecidos no projeto de lei para a segregação e coleta seletiva de medicamentos vencidos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "No projeto de lei, há alguma menção específica sobre a responsabilidade das farmácias e drogarias no processo de coleta seletiva de medicamentos vencidos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0027",
+      "topic_cluster": 27,
+      "seed_query_id": "146",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de lei para permitir a desaposentação e recálculo da aposentadoria.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários à desaposentação e ao recálculo da aposentadoria, conforme debatidos nas comissões da Câmara?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais foram os principais argumentos favoráveis e contrários à desaposentação e ao recálculo da aposentadoria debatidos nas comissões da Câmara desde 2020?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram os principais estudos econômicos e atuariais apresentados nas comissões da Câmara desde 2020 para subsidiar o debate sobre a desaposentação e o recálculo da aposentadoria?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0028",
+      "topic_cluster": 28,
+      "seed_query_id": "199",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "projeto de lei para criar multa diária caso o cadastro do consumidor não seja excluído do banco de dados de cadastro positivo",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare a proposta de multa diária para exclusão de cadastro no Cadastro Positivo com a multa aplicada pela Lei Geral de Proteção de Dados (LGPD) em casos de violação de dados pessoais. Quais são as diferenças e similaridades em termos de valor, periodicidade e condições de aplicação?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Para fins de comparação, poderia detalhar a periodicidade e o valor mínimo e máximo da multa prevista na proposta para exclusão de cadastro no Cadastro Positivo, bem como as condições específicas para a aplicação dessa multa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Na proposta de projeto de lei, há alguma distinção entre os tipos de entidades que podem ser multadas, como empresas privadas ou órgãos públicos, ou a multa se aplica igualmente a todos os agentes que manuseiam dados de cadastro positivo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0029",
+      "topic_cluster": 29,
+      "seed_query_id": "681",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito a elaboração de uma proposição legislativa objetivando garantir recursos ( por exemplo, pela criação de um fundo de promoção da igualdade racial) para políticas afirmativas destinadas a promover a igualdade de condições para a população negra brasileira.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Para melhor direcionar a elaboração da proposição legislativa, poderia informar se há áreas específicas (educação, saúde, emprego, etc.) nas quais deseja que as políticas afirmativas sejam priorizadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Dentro do escopo de políticas afirmativas para a população negra, qual área específica você considera mais prioritária para ser contemplada com os recursos do fundo de promoção da igualdade racial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais medidas específicas você sugere para a implementação dessas políticas nas áreas priorizadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0030",
+      "topic_cluster": 30,
+      "seed_query_id": "331",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de Decreto legislativo para sustar o reajuste das tarifas de energia elétrica em Pernambuco.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Qual foi a justificativa apresentada para o reajuste das tarifas de energia elétrica em Pernambuco, e quais são os principais argumentos do projeto de decreto legislativo que visa sustá-lo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais impactos econômicos e sociais previstos com o reajuste das tarifas de energia elétrica em Pernambuco, conforme analisado no projeto de decreto legislativo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os impactos econômicos e sociais do reajuste das tarifas de energia elétrica em Pernambuco para as famílias de baixa renda e para as empresas de pequeno porte, conforme analisado no projeto de decreto legislativo.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0031",
+      "topic_cluster": 31,
+      "seed_query_id": "98",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito PL sobre proteção de cavernas.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "O senhor poderia especificar se está interessado em proposições legislativas que tratam exclusivamente da proteção de cavernas ou se também inclui medidas relacionadas à conservação de ecossistemas subterrâneos e sítios arqueológicos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Estou particularmente interessado em proposições legislativas que estabeleçam medidas concretas para a proteção de cavernas, como a criação de unidades de conservação específicas ou a regulamentação de atividades turísticas em áreas subterrâneas. Gostaria de saber se existem PLs que abordem esses aspectos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Estou interessado em proposições legislativas que estabeleçam medidas concretas para a proteção de cavernas, como a criação de unidades de conservação específicas ou a regulamentação de atividades turísticas em áreas subterrâneas, mais recentes ou de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0032",
+      "topic_cluster": 32,
+      "seed_query_id": "236",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito minuta de proposição que permita a prática de pesca esportiva, na modalidade pesque e solte , em unidades de conservação de proteção integral. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos contrários à prática de pesca esportiva na modalidade 'pesque e solte' em unidades de conservação de proteção integral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Considerando essas objeções, quais medidas poderiam ser implementadas para mitigar os impactos negativos da prática 'pesque e solte' nas unidades de conservação de proteção integral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais medidas já foram implementadas em outros países para mitigar os impactos negativos da prática 'pesque e solte' nas unidades de conservação de proteção integral, de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0033",
+      "topic_cluster": 33,
+      "seed_query_id": "476",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "projeto de lei que redefina o ato cooperativo.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais aspectos que as propostas legislativas recentes visam alterar na definição do ato cooperativo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Esses aspectos propostos para alteração já encontram alguma resistência ou apoio significativo entre os parlamentares?",
+          "answer_type": "partial",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os projetos de lei que propõem a inclusão de novas formas de atos cooperativos com aqueles que buscam restringir ou limitar o escopo atual dos atos cooperativos. Quais são as principais diferenças e similaridades entre essas abordagens?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0034",
+      "topic_cluster": 34,
+      "seed_query_id": "284",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "estabelecer uma legislação para incentivar a implantação da internet das coisas (internet of things) para possibilitar a oferta de novos produtos e serviços, como forma de promover o crescimento econômico",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais medidas específicas já foram propostas ou implementadas em outros países para incentivar a adoção da Internet das Coisas (IoT) e quais foram os resultados obtidos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais aspectos específicos da implementação da IoT nos outros países você considera mais relevantes para a elaboração da legislação brasileira, como incentivos fiscais, regulamentação de segurança ou promoção de parcerias público-privadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Quais experiências específicas de incentivos fiscais, regulamentação de segurança e promoção de parcerias público-privadas em países que já implementaram a IoT você considera mais promissoras para adaptação ao contexto brasileiro?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0035",
+      "topic_cluster": 35,
+      "seed_query_id": "111",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Indicação para o ministério da saúde para incorporar o medicamento zolgensma, para tratamento da atrofia muscular espinhal",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare os custos e benefícios da incorporação do medicamento Zolgensma com os de outros tratamentos disponíveis para a atrofia muscular espinhal no SUS.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais estudos clínicos que comprovam a eficácia e segurança do medicamento Zolgensma para o tratamento da atrofia muscular espinhal, e como esses resultados se comparam com os de outros medicamentos já disponíveis no mercado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os efeitos colaterais e a qualidade de vida dos pacientes tratados com Zolgensma em relação aos pacientes tratados com outros medicamentos já disponíveis para a atrofia muscular espinhal.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0036",
+      "topic_cluster": 36,
+      "seed_query_id": "113",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaboração de PEC para aumentar a remuneração dos agentes comunitários da saúde na constituição",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Qual é a situação atual da remuneração dos agentes comunitários de saúde no texto constitucional e em que dispositivo ela está prevista?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os valores específicos da remuneração mínima dos agentes comunitários de saúde atualmente previstos na Constituição?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Qual é o processo legislativo e os prazos para a aprovação de uma PEC que altere a remuneração dos agentes comunitários de saúde?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0037",
+      "topic_cluster": 37,
+      "seed_query_id": "266",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Alterar a lei de locações para fixar o IPCA como índice de reajuste dos aluguéis de imóveis residenciais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Poderia esclarecer se a proposta visa apenas os contratos novos ou se também pretende afetar os contratos já existentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "A proposta contempla alguma disposição transitória ou cláusula especial para os contratos já em vigor no momento da entrada em vigor da nova lei?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "A proposta contempla alguma medida compensatória ou mecanismo de ajuste para os locadores em caso de aplicação do IPCA a contratos já em vigor?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0038",
+      "topic_cluster": 38,
+      "seed_query_id": "696",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicita-se projeto de lei para definir que o índice admitido de alcoolemia na direção de veículo deve ser de 0,5 gramas por litro",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos a favor e contra a proposta de estabelecer o índice de 0,5 gramas de alcoolemia por litro como limite para direção de veículo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais foram as principais discussões e posições sobre a proposta de estabelecer o índice de 0,5 gramas de alcoolemia por litro como limite para direção de veículo nas últimas cinco sessões legislativas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Poderia esclarecer se as discussões nas últimas cinco sessões legislativas incluíram propostas alternativas ao limite de 0,5 gramas de alcoolemia por litro, ou se o foco foi principalmente sobre os argumentos a favor e contra esse valor específico?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0039",
+      "topic_cluster": 39,
+      "seed_query_id": "250",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "PL que torne o Serviço Militar facultativo. \n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Gostaria de saber se o projeto de lei em questão busca apenas tornar o Serviço Militar facultativo ou se também contempla outras medidas, como a criação de alternativas de serviço cívico ou a revisão das condições de prestação do serviço militar.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "O projeto de lei em questão prevê a criação de alternativas de serviço cívico para aqueles que optarem por não realizar o Serviço Militar?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais são as principais características e requisitos dessas alternativas de serviço cívico mencionadas no projeto de lei?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0040",
+      "topic_cluster": 40,
+      "seed_query_id": "374",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar proposição cabível para proibir a nomeação em cargo ou função comissionada de pessoa condenada por violência doméstica.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Qual é o escopo geográfico desta proposição? A medida se aplicaria apenas ao âmbito federal ou também aos estados e municípios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Considerando a aplicação em nível federal, quais seriam os impactos na estrutura administrativa e no processo de nomeações, bem como os desafios de implementação e fiscalização desta proposição?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os impactos e desafios de implementação desta proposição entre os cargos comissionados de natureza política e os de natureza técnica no âmbito federal.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0041",
+      "topic_cluster": 41,
+      "seed_query_id": "165",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "exportação de commodities",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Poderia esclarecer se está interessado especificamente em proposições legislativas que tratam de incentivos fiscais, regulamentação ou políticas comerciais relacionadas à exportação de commodities?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Gostaria de focar inicialmente em proposições legislativas que tratam de incentivos fiscais para a exportação de commodities. Existe algum projeto em tramitação ou recém-aprovado que aborde esse tema?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Você está interessado em proposições legislativas que tratam de incentivos fiscais para a exportação de commodities de maneira geral, ou há algum tipo específico de commodity que gostaria de focar, como agrícolas, minerais ou energéticas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0042",
+      "topic_cluster": 42,
+      "seed_query_id": "168",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "liquidação extrajudicial",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais foram os principais argumentos apresentados pelos defensores e detratores dessas proposições?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare as vantagens e desvantagens da liquidação extrajudicial para empresas de pequeno porte versus empresas de grande porte, considerando as proposições legislativas em tramitação.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Qual é o impacto da liquidação extrajudicial na recuperação de créditos para empresas de pequeno porte em comparação com empresas de grande porte, considerando as proposições legislativas em tramitação?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0043",
+      "topic_cluster": 43,
+      "seed_query_id": "170",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "lei das sociedades anônimas",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Qual aspecto específico da Lei das Sociedades Anônimas você deseja explorar em sua pesquisa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais são as principais alterações na Lei das Sociedades Anônimas promovidas por proposições legislativas aprovadas nos últimos cinco anos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as principais alterações na governança corporativa previstas nas proposições legislativas aprovadas nos últimos cinco anos, no âmbito da Lei das Sociedades Anônimas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0044",
+      "topic_cluster": 44,
+      "seed_query_id": "174",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "defesa da concorrência",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais instrumentos legais e regulatórios utilizados no Brasil para a defesa da concorrência?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais órgãos responsáveis pela aplicação e fiscalização das normas de defesa da concorrência no Brasil, e quais são suas competências específicas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como o Conselho Administrativo de Defesa Econômica (CADE) e a Secretaria de Advocacia da Concorrência (SEAE) se articulam para garantir a eficácia das normas de defesa da concorrência no Brasil, e quais são os principais mecanismos de cooperação entre esses órgãos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0045",
+      "topic_cluster": 45,
+      "seed_query_id": "175",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Possibilitar dedução do imposto de renda de pessoa física de doações para atividades de CTI (ciência, tecnologia e inovação) indicadas em cadastro criado para tal finalidade. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Possibilitar dedução do imposto de renda de pessoa física de doações para atividades de CTI (ciência, tecnologia e inovação) indicadas em cadastro criado para tal finalidade, considerando proposições mais recentes.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Quais são os principais argumentos apresentados nas proposições mais recentes que tratam dessas deduções para atividades de CTI?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais impactos econômicos e fiscais estimados pelas proposições mais recentes que tratam da dedução do imposto de renda de pessoa física para doações para atividades de CTI?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0046",
+      "topic_cluster": 46,
+      "seed_query_id": "177",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Pl para facilitar o financiamento imobiliário para famílias ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais mecanismos propostos no PL para facilitar o financiamento imobiliário para famílias?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Esses mecanismos propostos oferecem algum tipo de incentivo fiscal ou garantia adicional para as instituições financeiras?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os detalhes específicos sobre os incentivos fiscais mencionados no PL, como por exemplo, isenções, deduções ou créditos tributários?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0047",
+      "topic_cluster": 47,
+      "seed_query_id": "197",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Regulamentar a profissão de garçom",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes para regulamentar a profissão de garçom?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais foram os principais argumentos apresentados nas proposições legislativas mais recentes para regulamentar a profissão de garçom?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram os principais pontos de divergência entre os debatedores nas proposições legislativas mais recentes para regulamentar a profissão de garçom?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0048",
+      "topic_cluster": 48,
+      "seed_query_id": "306",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Prezados, a pedido do Deputado, solicitamos a elaboração de projeto que preveja a concessão de descontos em restaurantes a la carte para pessoas que tenham feito cirurgia de redução de estomago",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Qual é o percentual de desconto proposto para as pessoas que tenham feito cirurgia de redução de estômago?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Esses descontos seriam aplicados apenas a restaurantes específicos ou a todos os estabelecimentos que optarem por aderir a essa iniciativa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como seria a fiscalização e o acompanhamento da aplicação desses descontos pelos estabelecimentos aderentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0049",
+      "topic_cluster": 49,
+      "seed_query_id": "220",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar projeto de lei para estabelecer identificação do motociclista e passageiro.\nPode ser no capacete, colete ou outro acessório.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os aspectos legais e de segurança que devem ser considerados ao estabelecer uma identificação para motociclistas e passageiros, seja no capacete, colete ou outro acessório?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais são os critérios específicos para a identificação, como tamanho, cores, localização no capacete ou colete, que devem ser considerados para garantir a visibilidade e a segurança dos motociclistas e passageiros?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como as normas internacionais e práticas recomendadas por órgãos de segurança viária podem influenciar os critérios específicos para a identificação de motociclistas e passageiros, especialmente em relação ao tamanho, cores e localização no capacete ou colete?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0050",
+      "topic_cluster": 50,
+      "seed_query_id": "501",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "projeto de lei para limitar o juros do cheque especial",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são os projetos de lei mais recentes para limitar os juros do cheque especial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare as propostas de limitação dos juros do cheque especial apresentadas por deputados do Partido A com as propostas apresentadas por deputados do Partido B.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Quais são os principais critérios e métricas utilizados para avaliar e comparar as propostas de limitação dos juros do cheque especial apresentadas pelos deputados dos dois partidos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0051",
+      "topic_cluster": 51,
+      "seed_query_id": "223",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Gratuidade para obtenção da carteira de motorista (CNH) para pessoas de baixa renda. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Gostaria de esclarecer se a consulta inicial se refere especificamente a proposições legislativas que instituam a gratuidade total ou se também inclui aquelas que preveem descontos parciais ou isenções condicionais para a obtenção da CNH por pessoas de baixa renda?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Considerando a consulta anterior, gostaria de saber se há proposições legislativas que estabeleçam critérios específicos para a definição de 'pessoas de baixa renda' no contexto da gratuidade para obtenção da CNH?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais critérios específicos são utilizados nas proposições legislativas para determinar a elegibilidade de pessoas de baixa renda para a gratuidade na obtenção da CNH, como faixa de renda, número de membros da família, ou outros indicadores socioeconômicos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0052",
+      "topic_cluster": 52,
+      "seed_query_id": "254",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de lei para adicionar a disciplina da educação moral e cívica na grade escolar do ensino fundamental",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários à inclusão da educação moral e cívica na grade escolar do ensino fundamental, conforme discutidos em proposições legislativas relacionadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais estudos ou pesquisas citados nas proposições legislativas que apoiam ou refutam a eficácia da educação moral e cívica na formação dos estudantes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais são as principais críticas ou elogios aos métodos pedagógicos propostos para a implementação dessas disciplinas, conforme discutidos nas proposições legislativas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0053",
+      "topic_cluster": 53,
+      "seed_query_id": "595",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Aumentar a pena do crime de maus-tratos aos animais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários ao aumento da pena para o crime de maus-tratos aos animais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Como os argumentos favoráveis ao aumento da pena para o crime de maus-tratos aos animais se relacionam com a efetividade da prevenção e punição desses crimes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Que estudos ou dados empíricos existem que comprovem a eficácia do aumento das penas para crimes de maus-tratos aos animais na redução da incidência desses crimes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0054",
+      "topic_cluster": 54,
+      "seed_query_id": "304",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Gostaria que fosse analisada a viabilidade da apresentação de um projeto para incluir a totalidade do Estado do Espírito Santo no âmbito de atuação da Superintendência do Desenvolvimento do Nordeste",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Qual é a justificativa ou o argumento principal que suporta a inclusão do Estado do Espírito Santo no âmbito de atuação da Superintendência do Desenvolvimento do Nordeste?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Que dados ou estudos você possui que comprovem a necessidade ou a vantagem de incluir o Espírito Santo no âmbito de atuação da Sudene?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais indicadores socioeconômicos do Espírito Santo que justificam a sua inclusão no âmbito de atuação da Sudene, comparados aos estados atualmente contemplados pela Superintendência?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0055",
+      "topic_cluster": 55,
+      "seed_query_id": "695",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "permitir a compra de terras por estrangeiros pessoas físicas ou jurídicas\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos a favor e contra a permissão para estrangeiros, tanto pessoas físicas quanto jurídicas, comprarem terras no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare os impactos econômicos e sociais da permissão para estrangeiros, sejam pessoas físicas ou jurídicas, comprarem terras no Brasil, em regiões urbanas versus regiões rurais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Você poderia especificar quais regiões urbanas e rurais foram consideradas na comparação dos impactos econômicos e sociais da permissão para estrangeiros comprarem terras no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0056",
+      "topic_cluster": 56,
+      "seed_query_id": "480",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Propor o banimento do glifosato, agrotóxico (herbicida) muito utilizado na agricultura.\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos científicos e ambientais utilizados em favor e contra o banimento do glifosato?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os impactos econômicos do banimento do glifosato na agricultura brasileira, considerando a substituição por alternativas viáveis?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais foram os principais estudos e relatórios publicados nos últimos 5 anos sobre os impactos do glifosato na saúde humana e no meio ambiente?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0057",
+      "topic_cluster": 57,
+      "seed_query_id": "615",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "PL para medidas de prevenção à violência sexual contra crianças e adolescentes. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes para medidas de prevenção à violência sexual contra crianças e adolescentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Para fins de aprofundamento da pesquisa, poderia informar se a busca por proposições legislativas mais recentes se refere apenas a projetos de lei ou se inclui também outras modalidades, como medidas provisórias, decretos legislativos e resoluções?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Essas proposições legislativas mais recentes incluem alguma inovação significativa em relação às medidas de prevenção já existentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0058",
+      "topic_cluster": 58,
+      "seed_query_id": "321",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Cria carreira agente de trânsito.\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Qual é a diferença entre a criação de uma carreira de agente de trânsito no âmbito municipal e no âmbito estadual?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais diferenças nas atribuições e competências de um agente de trânsito municipal em comparação com um agente de trânsito estadual?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais são as principais diferenças nas atribuições e competências de um agente de trânsito municipal em comparação com um agente de trânsito estadual, considerando proposições legislativas mais recentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0059",
+      "topic_cluster": 59,
+      "seed_query_id": "324",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "vagas pessoas com deficiência em cargos públicos",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais são os principais desafios e obstáculos encontrados na implementação dessas políticas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Quais medidas estão sendo tomadas para superar esses obstáculos e desafios?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais ações específicas estão sendo implementadas para melhorar o processo de seleção e a integração de pessoas com deficiência no serviço público?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0060",
+      "topic_cluster": 60,
+      "seed_query_id": "327",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "uti neonatal em todos os municípios\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais desafios e barreiras para a implementação de UTIs neonatais em todos os municípios brasileiros?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais dificuldades financeiras e infraestruturais enfrentadas pelos municípios menores na implementação de UTIs neonatais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare as dificuldades encontradas na implementação de UTIs neonatais entre municípios de regiões metropolitanas e municípios do interior do país.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0061",
+      "topic_cluster": 61,
+      "seed_query_id": "329",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "contratação de médicos sem crm\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são as principais justificativas apresentadas nas proposições legislativas que permitem a contratação de médicos sem CRM?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare as principais justificativas apresentadas para a contratação de médicos sem CRM em áreas urbanas versus áreas rurais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as principais diferenças nas justificativas apresentadas para a contratação de médicos sem CRM em áreas urbanas versus áreas rurais, especialmente em relação às questões de escassez de profissionais e acesso à saúde?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0062",
+      "topic_cluster": 62,
+      "seed_query_id": "338",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "regulamentar a tele educação física",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais desafios e requisitos técnicos para a implementação da tele educação física no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais barreiras tecnológicas e de infraestrutura que podem impedir a implementação efetiva da tele educação física no Brasil?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como as diferenças regionais de acesso à internet no Brasil impactam a implementação da tele educação física?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0063",
+      "topic_cluster": 63,
+      "seed_query_id": "340",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Regulamentação dos transgêneros no esporte",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Gostaria de esclarecer se a consulta se refere especificamente à participação de atletas transgêneros em competições esportivas ou se abrange também outros aspectos relacionados à regulamentação de transgêneros no esporte?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Qual é a principal legislação em tramitação no Congresso Nacional que trata da participação de atletas transgêneros em competições esportivas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Qual é o principal projeto de lei em tramitação na Câmara dos Deputados que trata especificamente da participação de atletas transgêneros em competições esportivas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0064",
+      "topic_cluster": 64,
+      "seed_query_id": "343",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Colégios eleitorais de entidades de administração do desporto",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Qual a composição mínima e máxima dos colégios eleitorais de entidades de administração do desporto conforme a legislação vigente?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os critérios para a inclusão de membros nos colégios eleitorais de entidades de administração do desporto?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os critérios de composição dos colégios eleitorais de entidades de administração do desporto para federações estaduais e confederações nacionais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0065",
+      "topic_cluster": 65,
+      "seed_query_id": "561",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Criação de fundos especiais",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e requisitos legais para a criação de fundos especiais no âmbito federal?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "No âmbito dos requisitos legais mencionados, poderia especificar quais são os principais critérios técnicos e administrativos necessários para a criação de um fundo especial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Na resposta anterior, mencionou-se a necessidade de um planejamento orçamentário detalhado. Poderia esclarecer quais são os principais elementos que compõem esse planejamento orçamentário para a criação de um fundo especial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0066",
+      "topic_cluster": 66,
+      "seed_query_id": "347",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "proibir refrigerante escolas\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos apresentados em proposições legislativas que visam proibir a venda de refrigerantes nas escolas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais são os principais argumentos apresentados em proposições legislativas que visam proibir a venda de refrigerantes nas escolas de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os principais argumentos apresentados em proposições legislativas que visam proibir a venda de refrigerantes nas escolas públicas e nas escolas privadas de 2020 em diante.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0067",
+      "topic_cluster": 67,
+      "seed_query_id": "350",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicito elaborar proposição para revogar a reforma trabalhista.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Solicito elaborar proposição para revogar a reforma trabalhista, considerando apenas as proposições mais recentes, a partir de 2020.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais pontos da reforma trabalhista que as proposições mais recentes (a partir de 2020) buscam revogar?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Quais são os principais pontos da reforma trabalhista que as proposições mais recentes (a partir de 2020) buscam revogar, e há alguma proposição específica que destaque nesse sentido?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0068",
+      "topic_cluster": 68,
+      "seed_query_id": "370",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "fornecimento de escovas de dentes pelo SUS e escolas",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes sobre o fornecimento de escovas de dentes pelo SUS e escolas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais foram as últimas ações ou movimentações em relação às proposições legislativas mais recentes sobre o fornecimento de escovas de dentes pelo SUS e escolas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare as proposições legislativas mais recentes que tratam do fornecimento de escovas de dentes pelo SUS com aquelas que tratam do fornecimento pelas escolas. Quais são as principais diferenças e similaridades?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0069",
+      "topic_cluster": 69,
+      "seed_query_id": "638",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de Lei para regularização fundiária de terras da União. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Quais são as principais diferenças entre a regularização fundiária de terras da União destinadas à agricultura familiar e aquelas destinadas a uso comercial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e requisitos legais estabelecidos para a regularização fundiária de terras da União destinadas à agricultura familiar?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Poderia esclarecer se existem diferenças significativas nos critérios e requisitos legais para a regularização fundiária de terras da União destinadas à agricultura familiar, comparados com os requisitos para terras destinadas a uso comercial?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0070",
+      "topic_cluster": 70,
+      "seed_query_id": "682",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Projeto de Lei para barreiras sanitárias em terras indígenas, em razão da pandemia covid19. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare os impactos das barreiras sanitárias nas terras indígenas durante a pandemia de COVID-19 entre as comunidades que adotaram medidas rigorosas e aquelas que não o fizeram.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais foram os principais desafios enfrentados pelas comunidades indígenas que adotaram medidas rigorosas de barreiras sanitárias durante a pandemia de COVID-19, em comparação com aquelas que não o fizeram?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram as principais estratégias utilizadas pelas comunidades indígenas que adotaram medidas rigorosas de barreiras sanitárias para superar os desafios enfrentados durante a pandemia de COVID-19?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0071",
+      "topic_cluster": 71,
+      "seed_query_id": "426",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Solicita proposição que proíba Petrobras de praticar PPI",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos que sustentam a necessidade de uma proposição que proíba a Petrobras de praticar PPI?",
+          "answer_type": "partial",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Como esses argumentos têm sido recebidos pelos principais atores políticos e econômicos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais têm sido as reações dos órgãos reguladores e da sociedade civil em relação a esses argumentos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0072",
+      "topic_cluster": 72,
+      "seed_query_id": "430",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Conferir ao município de Luziânia o título de Capital Nacional do Café do Cerrado. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos apresentados nas proposições legislativas que visam conferir ao município de Luziânia o título de Capital Nacional do Café do Cerrado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os impactos econômicos e sociais esperados com a concessão do título de Capital Nacional do Café do Cerrado ao município de Luziânia, conforme mencionados nas proposições legislativas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Em quais proposições legislativas específicas foram mencionados os impactos econômicos e sociais esperados com a concessão do título de Capital Nacional do Café do Cerrado ao município de Luziânia?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0073",
+      "topic_cluster": 73,
+      "seed_query_id": "432",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Conceder desconto para os agricultores que tomaram crédito rural em 2021 por conta da pandemia . ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Qual a diferença entre os descontos propostos para agricultores familiares e para grandes produtores rurais que tomaram crédito rural em 2021 por conta da pandemia?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Na proposta legislativa, há diferenciação entre os descontos concedidos aos agricultores familiares e aos grandes produtores rurais que tomaram crédito rural em 2021 por conta da pandemia? Se sim, quais são os percentuais ou condições específicas para cada categoria?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Há alguma justificativa específica na proposta legislativa para a diferença de descontos entre esses grupos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0074",
+      "topic_cluster": 74,
+      "seed_query_id": "471",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaborar projeto de lei adotando as seguintes providências: prorrogação de dívidas de crédito rural contratadas por agricultores familiares entre 2020 e 2021.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e condições previstos em projetos de lei similares para a prorrogação de dívidas de crédito rural contratadas por agricultores familiares?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Quais são os principais critérios e condições específicos que costumam ser adotados em projetos de lei similares, especialmente em relação aos prazos de prorrogação, taxas de juros e requisitos de elegibilidade dos agricultores familiares?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os mecanismos de fiscalização e acompanhamento previstos em projetos de lei similares para garantir o cumprimento das condições de prorrogação de dívidas de crédito rural?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0075",
+      "topic_cluster": 75,
+      "seed_query_id": "577",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Elaboração de proposição que institua o voto facultativo.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare os efeitos potenciais do voto facultativo sobre a participação eleitoral e a qualidade das campanhas políticas.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais estudos empíricos podem ser citados para avaliar o impacto do voto facultativo na qualidade das campanhas políticas e na participação eleitoral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais achados dos estudos empíricos sobre o impacto do voto facultativo na representatividade política, especialmente em relação à diversidade de gênero e raça?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0076",
+      "topic_cluster": 76,
+      "seed_query_id": "495",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Distribuição de pílula anticoncepcionais e outros contraceptivos pelo SUS.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais são os principais argumentos utilizados no debate sobre a distribuição desses contraceptivos pelo SUS?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais preocupações éticas e de saúde pública levantadas por parlamentares contrários à distribuição de contraceptivos pelo SUS?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Podemos especificar quais são os principais argumentos éticos e de saúde pública que os parlamentares contrários à distribuição de contraceptivos pelo SUS têm levantado, ou essas preocupações são amplamente genéricas e não detalhadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0077",
+      "topic_cluster": 77,
+      "seed_query_id": "564",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Limites de despesas da lei de responsabilidade fiscal",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e indicadores utilizados para estabelecer os limites de despesas na Lei de Responsabilidade Fiscal?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Na legislação atual, quais são as diferenças entre os limites de despesas para os entes da federação (União, Estados e Municípios) e como esses limites são ajustados ao longo do tempo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Podemos detalhar como os limites de despesas são ajustados ao longo do tempo para os entes federativos, especialmente considerando fatores como inflação e variações na receita?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0078",
+      "topic_cluster": 78,
+      "seed_query_id": "519",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Reintroduzir período de carência de 18 meses para o Fundo Fies para os contratos atuais.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Poderia esclarecer se a proposta de reintroduzir o período de carência de 18 meses se aplica apenas aos contratos novos ou também aos contratos já existentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as implicações financeiras e operacionais da reintrodução do período de carência de 18 meses para os contratos do Fies já existentes?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Qual seria o impacto da reintrodução do período de carência de 18 meses para os contratos do Fies já existentes no orçamento do governo e na gestão das instituições financeiras envolvidas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0079",
+      "topic_cluster": 79,
+      "seed_query_id": "520",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Reconhece a cavalgada e o bumba-meu-boi como patrimônio cultural imaterial brasileiro.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas que reconhecem a cavalgada e o bumba-meu-boi como patrimônio cultural imaterial brasileiro, aprovadas de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes que reconhecem a cavalgada e o bumba-meu-boi como patrimônio cultural imaterial brasileiro, aprovadas de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos utilizados nas justificativas das proposições legislativas que reconhecem a cavalgada e o bumba-meu-boi como patrimônio cultural imaterial brasileiro, aprovadas de 2020 em diante?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0080",
+      "topic_cluster": 80,
+      "seed_query_id": "532",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Aumenta o valor do Vale Cultura.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare o impacto econômico do aumento do valor do Vale Cultura com o impacto social na população beneficiária.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais estimativas de custo adicional para o governo com o aumento do valor do Vale Cultura e como esses custos se comparam aos benefícios sociais esperados?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Poderia fornecer mais detalhes sobre os critérios utilizados para estimar os custos adicionais e os benefícios sociais esperados com o aumento do valor do Vale Cultura?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0081",
+      "topic_cluster": 81,
+      "seed_query_id": "536",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Meia-entrada nos cinemas para autistas.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os critérios e requisitos para que uma pessoa com autismo possa ter direito à meia-entrada nos cinemas, conforme previsto em legislações federais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "nonstandalone",
+          "query": "Esses critérios e requisitos são uniformemente aplicados em todos os estados, ou há variações regionais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são os principais desafios na implementação e fiscalização dos critérios e requisitos para a meia-entrada nos cinemas para pessoas com autismo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0082",
+      "topic_cluster": 82,
+      "seed_query_id": "542",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Inscreve o imperador d. Pedro II no livro de heróis e heroínas da pátria.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare a proposta de inscrição do imperador D. Pedro II no Livro de Heróis e Heroínas da Pátria com propostas similares que visem incluir figuras históricas republicanas no mesmo livro.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais foram as justificativas apresentadas nas propostas similares que visam incluir figuras históricas republicanas no Livro de Heróis e Heroínas da Pátria, em comparação com a proposta para incluir D. Pedro II?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Analise as críticas e objeções apresentadas contra as propostas que visam incluir figuras históricas republicanas no Livro de Heróis e Heroínas da Pátria, em comparação com as críticas à proposta de incluir D. Pedro II.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0083",
+      "topic_cluster": 83,
+      "seed_query_id": "552",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Estabelece o Dia Nacional do Contador.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais são as principais justificativas apresentadas para a criação dessas datas comemorativas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais impactos econômicos e sociais são esperados com a instituição do Dia Nacional do Contador?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais medidas específicas foram propostas para promover a celebração do Dia Nacional do Contador, e como essas medidas visam beneficiar a categoria profissional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0084",
+      "topic_cluster": 84,
+      "seed_query_id": "565",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Contingenciamento de recursos",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e mecanismos utilizados pelo Poder Executivo para realizar o contingenciamento de recursos no orçamento federal?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare os impactos do contingenciamento de recursos no orçamento federal entre os Ministérios da Saúde e da Educação. Quais setores são mais afetados e por quê?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais foram os impactos do contingenciamento de recursos no orçamento federal nos Ministérios da Saúde e da Educação nos últimos três anos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0085",
+      "topic_cluster": 85,
+      "seed_query_id": "563",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Prestação de auxílio financeiro da União",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios e condições estabelecidos na legislação para a prestação de auxílio financeiro da União a entes federativos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare as condições e critérios para a prestação de auxílio financeiro da União entre entes federativos em situação de emergência e entes federativos em situação de calamidade pública.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as diferenças específicas nas condições de contrapartida e no monitoramento da aplicação dos recursos entre a prestação de auxílio financeiro para entes federativos em situação de emergência e os em situação de calamidade pública?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0086",
+      "topic_cluster": 86,
+      "seed_query_id": "571",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Critérios para a realização de transferências voluntárias",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais critérios previstos na legislação federal para a realização de transferências voluntárias entre entes federativos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais restrições e condições impostas pela legislação federal para a realização de transferências voluntárias de recursos financeiros?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Na legislação federal, há distinções específicas entre as restrições aplicadas às transferências voluntárias de recursos financeiros para Estados, Municípios e Distrito Federal? Se sim, quais são essas distinções?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0087",
+      "topic_cluster": 87,
+      "seed_query_id": "584",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "tributar as exportações\n",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais seriam os principais desafios e impactos econômicos decorrentes da implementação dessas propostas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "comparative",
+          "query": "Compare os impactos econômicos de tributar as exportações de commodities agrícolas versus as exportações de produtos manufaturados.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare os efeitos da tributação das exportações sobre o setor primário (agricultura e mineração) versus o setor secundário (indústria de transformação).",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0088",
+      "topic_cluster": 88,
+      "seed_query_id": "582",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "dar isenção na compra de automóvel para corretores",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "clarification",
+          "query": "Gostaria de esclarecer se a isenção na compra de automóvel para corretores se refere a isenção de impostos, taxas ou ambos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Gostaria de saber se há proposições legislativas mais recentes sobre a isenção na compra de automóvel para corretores, especificamente relacionadas à isenção de impostos e taxas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Essas proposições recentes que mencionei abrangem também a renovação da frota de automóveis pelos corretores ou estão restritas à primeira compra?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0089",
+      "topic_cluster": 89,
+      "seed_query_id": "588",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "permitir a dedução de gastos com animais no imposto de renda",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes tratam da possibilidade de deduzir gastos com animais no Imposto de Renda?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "temporal",
+          "query": "Quais proposições legislativas mais recentes, de 2020 em diante, tratam da possibilidade de deduzir gastos com animais no Imposto de Renda?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Quais são os principais tipos de gastos com animais que essas proposições legislativas pretendem permitir deduzir no Imposto de Renda?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0090",
+      "topic_cluster": 90,
+      "seed_query_id": "601",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "A sentença penal condenatória deve transitar em julgado após a decisão de 2ª instância, com a prisão do condenado.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais são os principais argumentos a favor e contra a adoção dessas medidas em relação ao trânsito em julgado e à prisão do condenado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as implicações constitucionais e jurisprudenciais da adoção da prisão após a decisão de 2ª instância?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Como essas implicações podem afetar a aplicação prática do direito penal e a garantia dos direitos fundamentais do acusado?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0091",
+      "topic_cluster": 91,
+      "seed_query_id": "605",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Instituir o trabalho obrigatório e forçado do preso.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são as principais justificativas apresentadas nas proposições legislativas para a instituição do trabalho obrigatório e forçado de presos?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "As justificativas apresentadas abordam especificamente a reabilitação do preso, a redução da superlotação carcerária ou a compensação por custos de manutenção do sistema prisional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "comparative",
+          "query": "Compare as justificativas apresentadas para a instituição do trabalho obrigatório e forçado de presos que enfatizam a reabilitação do preso com aquelas que enfatizam a compensação por custos de manutenção do sistema prisional.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0092",
+      "topic_cluster": 92,
+      "seed_query_id": "608",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Estudo sobre racismo institucional e estrutural. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais medidas legislativas já foram propostas para combater essas formas de racismo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais dessas medidas legislativas propostas para combater o racismo institucional e estrutural foram efetivamente aprovadas e sancionadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais foram os principais desafios e obstáculos enfrentados durante o processo de aprovação e sanção das medidas legislativas efetivamente aprovadas para combater o racismo institucional e estrutural?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0093",
+      "topic_cluster": 93,
+      "seed_query_id": "624",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Incluir motivação política no crime de terrorismo.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "comparative",
+          "query": "Compare as implicações legais e práticas de incluir a motivação política no crime de terrorismo em países que já adotaram essa medida, como a França e o Reino Unido.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os critérios específicos usados pela França e pelo Reino Unido para determinar a motivação política em crimes de terrorismo, e como esses critérios são aplicados na prática?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Como os tribunais da França e do Reino Unido interpretam e aplicam os critérios de motivação política em casos específicos de crimes de terrorismo?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0094",
+      "topic_cluster": 94,
+      "seed_query_id": "686",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "TECNOLOGIAS ASSISTIVAS PESSOA COM DEFICIÊNCIA",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais tipos de tecnologias assistivas que têm sido objeto de proposições legislativas voltadas para pessoas com deficiência?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Você poderia especificar se está interessado em tecnologias assistivas para deficiências específicas, como visual, auditiva, motora ou intelectual, ou se prefere uma abordagem geral?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Poderia fornecer exemplos de proposições legislativas que tratam especificamente de tecnologias assistivas para pessoas com deficiência motora?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0095",
+      "topic_cluster": 95,
+      "seed_query_id": "642",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Proposição para submeter a demarcação de terras indígenas ao Congresso Nacional. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos favoráveis e contrários à proposta de submeter a demarcação de terras indígenas ao Congresso Nacional?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são os impactos potenciais da proposta sobre os direitos territoriais dos povos indígenas, especialmente em relação à segurança jurídica e ao cumprimento do princípio constitucional da proteção aos povos indígenas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "clarification",
+          "query": "Poderia esclarecer quais são as principais normas constitucionais e legais que atualmente regem a demarcação de terras indígenas, para que possamos melhor compreender os impactos da proposta?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0096",
+      "topic_cluster": 96,
+      "seed_query_id": "645",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "Parecer Presidência da Câmara, compra de terras por estrangeiros. ",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os principais argumentos apresentados no Parecer Presidência da Câmara sobre a compra de terras por estrangeiros?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "O Parecer Presidência da Câmara aborda especificamente as preocupações relacionadas à segurança nacional e soberania em relação à compra de terras por estrangeiros?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "nonstandalone",
+          "query": "Quais medidas específicas o Parecer Presidência da Câmara sugere para mitigar essas preocupações?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0097",
+      "topic_cluster": 97,
+      "seed_query_id": "666",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "AUXÍLIO DOENÇA A CARGO DA EMPRESA",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "temporal",
+          "query": "Quais são as proposições legislativas mais recentes sobre auxílio doença a cargo da empresa?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "clarification",
+          "query": "Gostaria de saber se a pesquisa deve incluir apenas proposições que tratam especificamente do auxílio doença a cargo da empresa, ou se também deve abranger outras medidas relacionadas à proteção ao trabalho em caso de doença?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Considerando as proposições legislativas mais recentes, quais são os principais argumentos apresentados pelos proponentes em favor da responsabilidade da empresa no pagamento do auxílio doença?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0098",
+      "topic_cluster": 98,
+      "seed_query_id": "671",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "PENSÃO ESPECIAL ÓRFÃOS COVID",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "follow_up",
+          "query": "Quais são os critérios de elegibilidade para os órfãos beneficiários da pensão especial concedida em razão da COVID-19?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as condições específicas que os órfãos devem cumprir para manter o recebimento da pensão especial concedida em razão da COVID-19?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "follow_up",
+          "query": "Quais são as penalidades ou sanções aplicadas caso os órfãos ou seus responsáveis não cumpram as condições específicas para manter o recebimento da pensão especial concedida em razão da COVID-19?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    },
+    {
+      "session_id": "ulysses_mt_0099",
+      "topic_cluster": 99,
+      "seed_query_id": "708",
+      "turns": [
+        {
+          "n": 1,
+          "type": "initial",
+          "query": "O Deputado Gustavo Binenbojm solicita estudo sobre candidaturas avulsas no direito comparado.",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 2,
+          "type": "nonstandalone",
+          "query": "Quais países adotam essas candidaturas avulsas e como elas são regulamentadas?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 3,
+          "type": "follow_up",
+          "query": "Quais são as principais vantagens e desvantagens das candidaturas avulsas nos países que as adotam, conforme estudos e experiências internacionais?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        },
+        {
+          "n": 4,
+          "type": "temporal",
+          "query": "Quais são as principais alterações nas normas de candidaturas avulsas nos países que as adotam, desde 2020?",
+          "answer_type": "answerable",
+          "retrieved_bill_names": [],
+          "judgments": {}
+        }
+      ]
+    }
+  ]
+}

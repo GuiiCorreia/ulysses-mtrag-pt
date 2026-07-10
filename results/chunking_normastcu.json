@@ -1,0 +1,23 @@
+{
+  "config": {
+    "max_doc_chars": 30000,
+    "chunk_size": 3000,
+    "overlap": 400,
+    "top_docs": 10,
+    "chunk_pool": 100,
+    "conditions": [
+      "dense_chunked"
+    ]
+  },
+  "n_queries": 46,
+  "n_docs": 14469,
+  "results": {
+    "dense_chunked": {
+      "nDCG@5": 0.3174,
+      "nDCG@10": 0.3299,
+      "MRR": 0.5589,
+      "Recall@10": 0.2942,
+      "MAP": 0.2088
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# Datasets (public; download separately)
+bills_dataset.csv
+relevance_feedback_dataset.csv
+*.csv
+!results/human_eval_sample.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Secrets
+.env
+*.key
+
+# Caches / heavy artifacts
+*.pkl
+**/cache/
+*.safetensors
+*.bin
+
+# Collected human annotations (keep out of the repo)
+results/human_eval_[!s]*.csv
+annotation_deploy/annotations/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

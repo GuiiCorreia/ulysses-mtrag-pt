@@ -1,0 +1,18 @@
+# Deploy the annotation app on the VPS:
+#   1) cd codigos_mestrado
+#   2) mkdir -p annotation_deploy/annotations
+#   3) cp results/human_eval_sample.csv annotation_deploy/annotations/   # seed the sample
+#   4) docker compose -f annotation_deploy/docker-compose.yml up -d --build
+# Collect: each annotator's file appears in annotation_deploy/annotations/human_eval_<name>.csv
+# (or they click "Baixar minhas anotações" in the sidebar).
+services:
+  annotation:
+    build:
+      context: ..
+      dockerfile: annotation_deploy/Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      # Host dir holds the sample + collected annotations (persists across restarts).
+      - ./annotations:/app/results
+    restart: unless-stopped
