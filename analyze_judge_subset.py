@@ -87,6 +87,8 @@ gen = json.load(open("results/mtrag_gen.json", encoding="utf-8"))["results"]
 
 print("\n" + "=" * 70, "\nB) CORRELATION lastturn nDCG@10 x generation metric (400 units)\n" + "=" * 70)
 for m in gen:
+    if m == "__oracle__":
+        continue
     xs, F, R, B = [], [], [], []
     for u in gen[m]["per_unit"]:
         nd = raw[f"T{u['tn']}"][u["ci"]]
@@ -96,6 +98,8 @@ for m in gen:
 # pooled across models
 xs, F, R = [], [], []
 for m in gen:
+    if m == "__oracle__":
+        continue
     for u in gen[m]["per_unit"]:
         xs.append(raw[f"T{u['tn']}"][u["ci"]]); F.append(u["faith"]); R.append(u["rouge"])
 print(f"  {'POOLED (2000 units)':<26} faith r={pearson(xs,F):+.3f}/rho={spearman(xs,F):+.3f}  "
