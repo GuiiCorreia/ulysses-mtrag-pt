@@ -35,24 +35,26 @@ anonymous@example.org}}
 Retrieval-augmented generation (RAG) for legal assistance is inherently
 conversational, yet existing Brazilian-Portuguese legal information retrieval
 resources are single-turn and retrieval-only. We introduce \textbf{Ulysses-MTRAG},
-a synthetic multi-turn RAG benchmark for Brazilian legislative dialogue, built by
-anchoring the first turn of each session in real expert queries carrying human
-relevance judgments (Ulysses-RFCorpus) and generating coherent follow-up turns with
-an LLM; relevance of retrieved documents is assessed by an LLM judge distinct from
-the generator. Using the benchmark we (i) measure how retrieval quality evolves
-across turns under four context strategies and two retrievers, finding significant
-per-turn degradation and a \emph{retriever-dependent} optimum: dense retrieval does
-no better with history than with the current turn alone, while lexical BM25 is
-significantly best with the full dialogue history, which acts as query expansion; (ii) run a
-size- and family-controlled generation study (7B to 72B parameters), finding that
-model family dominates parameter count for faithfulness---a well-chosen 8B model is
-more faithful than 14B and 31B models from other families and competitive with a
-72B model nine times its size---while retrieval degradation propagates to generation
-only weakly (Spearman $\rho\!\le\!0.21$); and (iii) assess the LLM
-relevance judge against the pre-existing expert labels: full-pool agreement is
-modest ($0.58$), dominated by pooled documents the experts never assessed, and
-rises to $0.94$ on the subset they explicitly labeled. We will release the
-benchmark, prompts, and code; an anonymized repository accompanies this submission.
+a synthetic multi-turn RAG benchmark for Brazilian legislative dialogue. Each
+session anchors its first turn in a real expert query carrying human relevance
+judgments (Ulysses-RFCorpus); an LLM then generates coherent follow-up turns, and
+an LLM judge distinct from the generator assesses the relevance of retrieved
+documents. Using the benchmark, we answer three questions. First, how does
+retrieval quality evolve across turns, and does dialogue history help? Under four
+context strategies and two retrievers, quality degrades significantly with turn
+depth, and the best strategy is \emph{retriever-dependent}: dense retrieval does no
+better with history than with the current turn alone, whereas lexical BM25 is
+significantly best with the full dialogue history, which acts as query expansion.
+Second, does model scale improve generation faithfulness? A size- and
+family-controlled study (7B to 72B parameters) shows that model family dominates
+parameter count: a well-chosen 8B model is more faithful than 14B and 31B models
+from other families and competitive with a 72B model nine times its size, while
+retrieval degradation propagates to generation only weakly (Spearman
+$\rho\!\le\!0.21$). Third, how reliable is the LLM relevance judge? Against
+pre-existing expert labels, full-pool agreement is modest ($0.58$)---dominated by
+pooled documents the experts never assessed---but rises to $0.94$ on the subset
+they explicitly labeled. We will release the benchmark, prompts, and code; an
+anonymized repository accompanies this submission.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -72,15 +74,15 @@ legal RAG in Portuguese has, to our knowledge, not yet been studied.
 
 We address this gap with \textbf{Ulysses-MTRAG}, a synthetic multi-turn benchmark
 for Brazilian legislative dialogue. Rather than transplanting an existing recipe,
-our construction couples scalability with ecological validity: each session is
+our construction targets both scalability and ecological validity: each session is
 anchored in a \emph{real} expert query that carries human relevance judgments, and
-only the follow-up turns are LLM-generated. This human-anchored design is what
-distinguishes Ulysses-MTRAG from MTRAG \cite{Katsis2025MTRAG}, whose dialogues are
-fully human-authored (accurate but unscalable), and from CORAL \cite{Cheng2025CORAL},
-whose conversations are derived automatically from Wikipedia (scalable but without
-expert relevance ground truth); anchoring in pre-existing expert judgments uniquely
-allows us to audit the LLM relevance judge against experts \emph{inside} the
-benchmark itself. Our contributions are:
+only the follow-up turns are LLM-generated. This human-anchored design sets
+Ulysses-MTRAG apart from prior multi-turn benchmarks. MTRAG \cite{Katsis2025MTRAG}
+is fully human-authored---accurate, but unscalable. CORAL \cite{Cheng2025CORAL}
+derives conversations automatically from Wikipedia---scalable, but without expert
+relevance ground truth. Anchoring in pre-existing expert judgments lets us do
+something neither prior design supports: audit the LLM relevance judge against
+experts \emph{inside} the benchmark itself. Our contributions are:
 \begin{itemize}
   \item \textbf{Ulysses-MTRAG}: a multi-turn legal RAG benchmark of 100 four-turn
   sessions over 105{,}669 legislative bills, with human-anchored first turns,
@@ -93,9 +95,11 @@ benchmark itself. Our contributions are:
   \item A \textbf{size- and family-controlled generation study} (7B--72B) showing
   that faithfulness is governed more by model family than by parameter count: the
   best 8B model outperforms 14B and 31B models from other families and is
-  statistically indistinguishable from a 72B model nine times its size, so scaling
-  up is not a reliable route to faithful legal RAG here, and
-  retrieval degradation propagates to generation only weakly.
+  statistically indistinguishable from a 72B model nine times its size. Scaling up
+  is thus not a reliable route to faithful legal RAG in this domain.
+  \item Evidence that \textbf{retrieval degradation propagates to generation only
+  weakly}: faithfulness declines far less steeply than retrieval quality across
+  turns, and correlates weakly with it at the turn level.
   \item A \textbf{reliability assessment} of the LLM relevance judge against
   pre-existing expert labels, disentangling the pooling-incompleteness confound: on
   the subset of documents the experts explicitly labeled, raw agreement is $0.94$.
@@ -155,26 +159,28 @@ risks of fully recursive generation \cite{Shumailov2024Collapse}.
 \section{Retrieval Setup}
 \label{sec:foundation}
 Our experiments use two standard retrievers: lexical BM25 \cite{Robertson2009BM25}
-and dense BGE-M3 \cite{Chen2024BGEM3}. For the benchmark corpus---legislative bills,
-whose official summaries (\emph{ementas}) are short---we embed and index each bill's
-summary, which fits comfortably within the encoder's window; the multi-turn
-experiments therefore use whole-summary dense indexing.
+and dense BGE-M3 \cite{Chen2024BGEM3}. The benchmark corpus is legislative bills,
+whose official summaries (\emph{ementas}) are short and fit comfortably within
+the encoder's window. The multi-turn experiments therefore index each bill by its
+full summary, with no chunking needed.
 
-\textbf{A length boundary and its mitigation.} Before the multi-turn analysis we
-characterize one boundary of this stack on Brazilian legal text, observed on the
-regulatory sub-domain of JU\'A \cite{Pereira2026JUA} (NormasTCU; $\sim$12k-token
-norms, $n{=}46$ queries). There, whole-document dense retrieval \emph{collapses}:
-no relevant norm appears in any top-10, yielding nDCG@10$=$0.000 across all
-queries, while lexical BM25 attains 0.328 (Table~\ref{tab:chunking}). The mechanism
-is length: each norm far exceeds BGE-M3's 8192-token window, so the single vector
-indexed per document is computed from a truncated prefix that omits the
-query-relevant passages \cite{Chen2024BGEM3,Zhou2024LengthCollapse}.
-Applying the standard passage-level remedy \cite{Dai2019Deeper,Karpukhin2020DPR}---%
-splitting each norm into sub-8k chunks, indexing chunks, and mapping retrieved
-chunks back to documents---recovers dense retrieval to parity with BM25
-(nDCG@10$=$0.330; BM25 retains better recall). We report this as a quantified
-sanity check that motivates our indexing choices, not as a novel technique: bills
-never hit this boundary, ultra-long norms do.
+\textbf{A length boundary, and why our benchmark avoids it.} Before the multi-turn
+analysis, we check whether this retrieval stack has a length limitation on
+Brazilian legal text, using the regulatory sub-domain of JU\'A
+\cite{Pereira2026JUA} (NormasTCU; $\sim$12k-token norms, $n{=}46$ queries) as a
+stress test. It does: whole-document dense retrieval \emph{collapses} there---no
+relevant norm appears in any top-10, yielding nDCG@10$=$0.000 across all
+queries---while lexical BM25 attains 0.328 (Table~\ref{tab:chunking}). The
+mechanism is length: each norm far exceeds BGE-M3's 8192-token window, so the
+single vector indexed per document is computed from a truncated prefix that omits
+the query-relevant passages \cite{Chen2024BGEM3,Zhou2024LengthCollapse}. The
+standard passage-level remedy---splitting each norm into sub-8k chunks, indexing
+the chunks, and mapping retrieved chunks back to documents
+\cite{Dai2019Deeper,Karpukhin2020DPR}---recovers dense retrieval to parity with
+BM25 (nDCG@10$=$0.330; BM25 still retains better recall). This confirms the
+boundary is real and gives us a tested mitigation, but our own bill corpus never
+approaches it: bill summaries are far short of 8k tokens, so the multi-turn
+benchmark below indexes them whole, with no chunking required.
 
 \begin{table}[t]
 \caption{Retrieval on NormasTCU ($n{=}46$). Whole-document dense retrieval
@@ -195,26 +201,33 @@ Dense, chunk-level    & 0.317 & \textbf{0.330} & 0.294 & 0.559 \\
 % ============================================================
 \section{The Ulysses-MTRAG Benchmark}
 \label{sec:benchmark}
-\textbf{Construction.} We seed sessions from the 692 queries of the public
-Ulysses-RFCorpus release, each carrying graded relevance judgments (relevant /
-partially relevant / irrelevant) produced by the legislative consultants of the
-Brazilian Chamber of Deputies \cite{Vitorio2024}, over a corpus of 105{,}669
+\textbf{Construction.} Session construction has three steps: seed selection, turn
+generation, and quality control.
+
+\emph{Seed selection.} We start from the 692 queries of the public Ulysses-RFCorpus
+release, each carrying graded relevance judgments (relevant / partially relevant /
+irrelevant) produced by the legislative consultants of the Brazilian Chamber of
+Deputies \cite{Vitorio2024}, over a corpus of 105{,}669
 bills.\footnote{Counts refer to the public release we use (692 queries;
 105{,}669 bills); the dataset paper reports 693 queries and 105{,}681 documents
-\cite{Vitorio2024}.} We first filter to queries
-with at least three (partially) relevant bills, embed the query texts with BGE-M3,
-and cluster them with $k$-means ($k{=}100$, fixed seed), selecting one
-representative seed per cluster to obtain a diverse, non-redundant seed set. The
-seed becomes Turn~1 and inherits its expert labels. Turns~2--4 are generated by an
-instruction-tuned LLM (Qwen2.5-72B) conditioned on the full session history and
-prompted to produce a coherent next question of a \emph{prescribed}
-type---follow-up, clarification, non-standalone, comparative, or temporal---a
-scheme we designed around the conversational challenges MTRAG emphasizes
-(non-standalone and comparative questions, answerability) \cite{Katsis2025MTRAG}.
-The generator is instructed to stay on-topic and not repeat earlier turns; we
-discard degenerate generations (empty, duplicated, or off-topic) and regenerate.
-The result is 100 four-turn sessions (400 turns); Fig.~\ref{fig:example} shows one.
-A Portuguese-specialized generator (e.g., Gaia/Sabi\'a) is left for future work.
+\cite{Vitorio2024}.} We keep only queries with at least three (partially) relevant
+bills, embed the remaining query texts with BGE-M3, and cluster them with
+$k$-means ($k{=}100$, fixed seed). One representative query per cluster becomes a
+session seed, giving a diverse, non-redundant set of 100 seeds; each seed becomes
+Turn~1 and inherits its expert relevance labels.
+
+\emph{Turn generation.} Turns~2--4 are generated by an instruction-tuned LLM
+(Qwen2.5-72B), conditioned on the full session history and prompted to produce a
+coherent next question of a \emph{prescribed} type---follow-up, clarification,
+non-standalone, comparative, or temporal. We designed this five-type scheme around
+the conversational challenges MTRAG emphasizes: non-standalone and comparative
+questions, and answerability \cite{Katsis2025MTRAG}.
+
+\emph{Quality control.} The generator is instructed to stay on-topic and not
+repeat earlier turns. We discard degenerate generations---empty, duplicated, or
+off-topic---and regenerate them. The result is 100 four-turn sessions (400 turns
+total); Fig.~\ref{fig:example} shows one. A Portuguese-specialized generator
+(e.g., Gaia/Sabi\'a) is left for future work.
 
 \begin{table}[t]
 \caption{Ulysses-MTRAG composition: realized turn-type and answer-type
@@ -266,24 +279,25 @@ relevant counts as relevant) wherever binary agreement is computed.
 context strategies: \emph{last-turn} (current query only), \emph{concat} (prior
 queries prepended), \emph{full-history} (all prior turns), and \emph{rewrite} (a
 Llama-3.1-8B model rewrites the query to standalone form)
-\cite{Mao2023LLM4CS,Elgohary2019CANARD}. Per turn and per retriever, we pool the documents retrieved by the four strategies
-and judge the pool once (standard pooling), scoring each strategy with nDCG@10 on
-the shared labels; a persistent judgment cache assigns identical labels to any
-(query, document) pair that appears in both retrievers' pools. We run the full strategy
-comparison under \emph{both} retrievers---dense BGE-M3 and lexical BM25
-(\S\ref{sec:foundation})---to test whether conclusions about dialogue history are
-retriever-specific.
+\cite{Mao2023LLM4CS,Elgohary2019CANARD}. Per turn and per retriever, we pool the
+documents retrieved by the four strategies and judge the pool once (standard
+pooling), scoring each strategy with nDCG@10 on the shared labels. A persistent
+judgment cache assigns identical labels to any (query, document) pair that appears
+in both retrievers' pools. We run the full strategy comparison under \emph{both}
+retrievers---dense BGE-M3 and lexical BM25 (\S\ref{sec:foundation})---to test
+whether conclusions about dialogue history are retriever-specific.
 
 \textbf{Generation.} To test whether retrieval degradation propagates to answers,
 each turn's top-5 last-turn-retrieved bills are passed, with a history-aware
-prompt, to five open-weight instruction-tuned small language models (SLMs) chosen
-to span the size range at competitive quality---Qwen2.5-7B \cite{Qwen2024Qwen25},
-Qwen3-8B \cite{Yang2025Qwen3}, Ministral-8B, Phi-4 (14B) \cite{Abdin2024Phi4}, and
-Gemma-4-31B---so that the effect of scale can be read directly from the comparison. We score each answer on three axes adapted from MTRAG's
-generation evaluation \cite{Katsis2025MTRAG}: (i) \emph{context faithfulness}
-(reference-less, RAGAS-style \cite{Es2024RAGAS}), judged by Llama-3.3-70B
-\cite{Grattafiori2024Llama3};
-(ii) \emph{reference similarity} to an oracle answer via BERTScore-F1
+prompt, to five open-weight instruction-tuned small language models (SLMs). We
+chose these five to span the size range at competitive quality: Qwen2.5-7B
+\cite{Qwen2024Qwen25}, Qwen3-8B \cite{Yang2025Qwen3}, Ministral-8B, Phi-4 (14B)
+\cite{Abdin2024Phi4}, and Gemma-4-31B. This spread lets the effect of scale be
+read directly from the comparison. We score each answer on three axes adapted
+from MTRAG's generation evaluation \cite{Katsis2025MTRAG}: (i) \emph{context
+faithfulness} (reference-less, RAGAS-style \cite{Es2024RAGAS}), judged by
+Llama-3.3-70B \cite{Grattafiori2024Llama3}; (ii) \emph{reference similarity} to
+an oracle answer via BERTScore-F1
 \cite{Zhang2020BERTScore} and ROUGE-L \cite{Lin2004ROUGE}; and (iii) an LLM-judge
 comparison against the oracle answer. The oracle (Qwen2.5-72B) receives the
 \emph{same} retrieved context and history as the evaluated models. Two design
@@ -324,10 +338,10 @@ rewrite, $p_{\text{adj}}{=}0.023$): concatenating history dilutes the single que
 embedding. For lexical BM25 the ranking \emph{reverses}---full-history is best and
 last-turn the \emph{worst} strategy ($0.741$ vs.\ $0.668$ all-turn mean; a $+0.097$
 gap over T2--T4, paired Wilcoxon $p<10^{-7}$)---because appending prior turns acts as
-query expansion, supplying lexically matching legal terms. The common ``just use the
-last turn'' heuristic is thus safe only for dense retrieval; lexically the opposite
-holds. This interaction cautions against drawing conclusions about conversational
-context from a single retriever.
+query expansion, supplying lexically matching legal terms. Using only the current
+turn is thus a safe default for dense retrieval, but a poor one for lexical
+retrieval, where the opposite holds. This interaction cautions against drawing
+conclusions about conversational context from a single retriever.
 
 Stratifying the dense results by turn type localizes the last-turn null result:
 explicitly non-standalone turns are the hardest (last-turn nDCG@10 $0.52$ vs.\
@@ -380,8 +394,9 @@ dense embeddings, full-history leads for BM25.}
 \textbf{RQ2 --- judge reliability against expert labels.}
 We audit the LLM judge against the pre-existing expert labels on the dense-run
 Turn-1 pool, reporting raw agreement alongside Cohen's~$\kappa$ \cite{Cohen1960}
-and prevalence-adjusted PABAK \cite{Byrt1993PABAK}. Over the full pool ($n{=}1000$ query--document pairs),
-agreement is modest (raw $0.58$, $\kappa{=}0.27$): the judge labels $69\%$ of
+and the Prevalence- and Bias-Adjusted Kappa (PABAK) \cite{Byrt1993PABAK}, which
+corrects $\kappa$ for skewed class prevalence. Over the full pool ($n{=}1000$
+query--document pairs), agreement is modest (raw $0.58$, $\kappa{=}0.27$): the judge labels $69\%$ of
 pooled documents relevant while the sparse expert labels cover far fewer ($29\%$),
 exactly the pattern expected when a retriever surfaces topically relevant documents
 the original annotators never assessed and the pooling convention counts them as
@@ -409,7 +424,8 @@ across the Qwen models faithfulness rises $0.781$ (7B) $\to 0.808$ (8B) $\to 0.8
 $p{=}0.001$); the $9\times$ step from 8B to 72B is not ($+0.033$, $p{=}0.074$), and
 the 72B additionally answers questions it authored, an advantage that inflates its
 score. Practically, a well-chosen 8B model is thus competitive with a 72B model nine
-times its size; raw scale is an unreliable lever relative to family and training.
+times its size; parameter count alone predicts faithfulness far less reliably
+than model family and training do.
 Faithfulness and reference similarity also decouple: Qwen3-8B is most faithful, yet
 Phi-4 is closest to the oracle answer (BERTScore $0.830$, ROUGE-L $0.472$), and since
 Phi-4 is not from the oracle's family, family bias does not dominate the
@@ -477,44 +493,51 @@ synthetic multi-turn benchmark construction: follow-ups are largely self-contain
 ($11.3\%$ non-standalone by design), so history-aware retrieval cannot show its
 value---our stratified analysis confirms history helps only on clarification and
 temporal turns. We present this as a diagnostic finding about synthetic multi-turn
-pipelines in a low-resource legal domain; benchmarks intending to stress
+pipelines in a low-resource legal domain. Benchmarks intending to stress
 conversational context should enforce a higher non-standalone quota at generation
-time, which we leave as future work alongside eliciting unanswerable turns
-($99.3\%$ of ours are answerable), which MTRAG \cite{Katsis2025MTRAG} uses to test
-abstention, and a dedicated human annotation of the full retrieved pool to tighten
-the judge-reliability bound of RQ2.
+time; we leave three extensions to future work: (a) such a higher-quota
+generation scheme, (b) eliciting unanswerable turns ($99.3\%$ of ours are
+answerable), which MTRAG \cite{Katsis2025MTRAG} uses to test abstention, and
+(c) a dedicated human annotation of the full retrieved pool to tighten the
+judge-reliability bound of RQ2.
 
-\textbf{Validity threats.} (i) We evaluate two retrievers (dense and lexical) and
-find the strategy ranking reverses between them; hybrid retrieval and other dense
-encoders may behave differently again, so the specific rankings should not be
-over-generalized beyond the two families tested.
-(ii) The follow-up generator, the oracle, and two evaluated models are related
-(same model or family); we mitigate by resting headline claims on the
-reference-less faithfulness axis with a judge from a different family, and by
-noting that a non-family model leads the reference-based metrics. (iii) The cross-family
-comparison has one model per size point, so family and size are partly confounded;
-we add a within-family Qwen ladder (7B/8B/72B) to isolate scale, but the 72B anchor
-is also the question author, an advantage we cannot fully remove. (iv) Judge-based scores vary across judging runs
-($\approx0.05$ in absolute value, ranking-stable) and are LLM-judged over a
-retrieval pool, so absolute values should be read as comparative rankings, with
-reliability bounded in RQ2. (v) The benchmark covers one legislative corpus,
-four-turn sessions, and synthetic follow-ups; human-authored legal dialogue may
-behave differently \cite{Qu2020ORConvQA}.
+\textbf{Validity threats.}
+\begin{itemize}
+  \item[(i)] We evaluate two retrievers (dense and lexical) and find the strategy
+  ranking reverses between them; hybrid retrieval and other dense encoders may
+  behave differently again, so the specific rankings should not be
+  over-generalized beyond the two families tested.
+  \item[(ii)] The follow-up generator, the oracle, and two evaluated models are
+  related (same model or family). We mitigate this by resting headline claims on
+  the reference-less faithfulness axis, judged by a model from a different
+  family, and by noting that a non-family model leads the reference-based
+  metrics.
+  \item[(iii)] The cross-family comparison has one model per size point, so
+  family and size are partly confounded. We add a within-family Qwen ladder
+  (7B/8B/72B) to isolate scale, but the 72B anchor is also the question author,
+  an advantage we cannot fully remove.
+  \item[(iv)] Judge-based scores vary across judging runs ($\approx0.05$ in
+  absolute value, though the ranking is stable) and are LLM-judged over a
+  retrieval pool; absolute values should therefore be read as comparative
+  rankings, with reliability bounded in RQ2.
+  \item[(v)] The benchmark covers one legislative corpus, four-turn sessions, and
+  synthetic follow-ups; human-authored legal dialogue may behave differently
+  \cite{Qu2020ORConvQA}.
+\end{itemize}
 
 % ============================================================
 \section{Conclusion}
 We presented Ulysses-MTRAG, a human-anchored synthetic multi-turn RAG benchmark
-for Brazilian legislative dialogue, and used it to show that (i) retrieval
-degrades significantly with dialogue depth, and the best way to use dialogue history
-is retriever-dependent---inert for dense retrieval but a significant gain for lexical
-BM25;
-(ii) generation faithfulness is governed more by model family than by scale---a
-well-chosen 8B model is competitive with a 72B nine times larger (difference not
-significant)---with retrieval degradation propagating to answers only weakly; and
-(iii) the LLM relevance judge agrees with expert labels on $94\%$ of the documents
-experts explicitly assessed, with full-pool disagreement dominated by label
-incompleteness. The benchmark, prompts, and code will be released; an anonymized
-repository accompanies the review.
+for Brazilian legislative dialogue. Retrieval degrades significantly with dialogue
+depth, and the best way to use dialogue history turned out to be
+retriever-dependent: inert for dense retrieval, but a significant gain for lexical
+BM25. Generation faithfulness is governed more by model family than by scale---a
+well-chosen 8B model is competitive with a 72B model nine times larger---and
+retrieval degradation propagates to generated answers only weakly. Finally, the
+LLM relevance judge agrees with expert labels on $94\%$ of the documents experts
+explicitly assessed, with full-pool disagreement dominated by label incompleteness
+rather than judge error. The benchmark, prompts, and code will be released; an
+anonymized repository accompanies the review.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references_ictai}
