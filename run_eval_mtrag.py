@@ -35,8 +35,9 @@ from mestrado.retrieval.bm25 import BM25Retriever
 from mestrado.retrieval.dense import DenseRetriever
 from mestrado.retrieval.hybrid import HybridRetriever
 from mestrado.retrieval.multi_turn_retriever import MultiTurnRetriever, TurnContext
-from mestrado.synthetic.llm_judge import get_judge, compute_fleiss_kappa
+from mestrado.synthetic.llm_judge import get_judge
 from mestrado.metrics.ir_metrics import ndcg_at_k, recall_at_k
+from mestrado.metrics.agreement import t1_agreement_report
 
 ULYSSES_CACHE = Path("results/cache/ulysses/bge-m3.pkl")
 BGE_M3 = "BAAI/bge-m3"
@@ -159,6 +160,7 @@ def main():
                 print(f"  {done}/{len(todo)} (cache saved)")
 
     scored = []
+    human_explicit = {}  # ci -> {names the human actually labelled}
     for ri, (ci, tn, seed_qid, tq, per_strat, pooled) in enumerate(records):
         llm_rel = {n: scores.get((ri, n), 0.0) for n in pooled}
         human_rel = None
@@ -166,31 +168,40 @@ def main():
             q = qmap.get(seed_qid)
             gr = q.graded_relevance() if q else {}
             human_rel = {n: gr.get(n, 0.0) for n in pooled}
+            human_explicit[ci] = {n for n in pooled if n in gr}
         scored.append((ci, tn, tq, pooled, per_strat, llm_rel, human_rel))
 
     # ---- Step 3: metrics (consistent LLM basis) + T1 human-vs-LLM kappa ----
     ndcg = defaultdict(lambda: defaultdict(list))
     rec  = defaultdict(lambda: defaultdict(list))
     human_T1, llm_T1 = {}, {}
+    # Keys carrying an EXPLICIT human label. The rest are set to 0.0 by the
+    # pooling convention (unjudged = irrelevant); conflating the two makes the
+    # headline agreement unreadable, so the split is carried through.
+    human_labeled_T1 = set()
     for ci, tn, tq, pooled, per_strat, llm_rel, human_rel in scored:
         for s, names in per_strat.items():
             ndcg[s][tn].append(ndcg_at_k(names, llm_rel, k=args.k))
             rec[s][tn].append(recall_at_k(names, llm_rel, k=args.k))
         if tn == 1 and human_rel is not None:
+            explicit = set(human_explicit.get(ci, ()))
             for n, hs in human_rel.items():
                 key = f"{ci}::{n}"
                 human_T1[key] = hs
                 llm_T1[key] = llm_rel.get(n, 0.0)
+                if n in explicit:
+                    human_labeled_T1.add(key)
 
     avg = lambda l: round(sum(l) / len(l), 4) if l else 0.0
     turns = sorted({tn for s in ndcg for tn in ndcg[s]})
 
-    # T1 LLM-judge vs human (Conle) agreement — validates the judge
+    # T1 LLM-judge vs human (Conle) agreement — validates the judge.
+    # Reported on the BINARY projection (the projection the gate decides on),
+    # with the three-level ordinal reading carried alongside it. See
+    # src/mestrado/metrics/agreement.py for why both are needed.
     t1_items = list(human_T1.keys())
-    t1_kappa = round(compute_fleiss_kappa([human_T1, llm_T1], t1_items), 4) if t1_items else None
-    t1_agree = (round(sum(1 for k in t1_items
-                          if (human_T1[k] >= 0.5) == (llm_T1[k] >= 0.5)) / len(t1_items), 4)
-                if t1_items else None)
+    t1_report = (t1_agreement_report(human_T1, llm_T1, t1_items, human_labeled_T1)
+                 if t1_items else None)
 
     print(f"\n{'='*68}\nnDCG@{args.k}  by strategy x turn (LLM-judged, consistent)\n{'='*68}")
     head = "strategy".ljust(12) + "".join(f"T{t}".rjust(9) for t in turns) + "mean".rjust(9)
@@ -207,13 +218,22 @@ def main():
             # Per-conversation raw nDCG per turn -> enables CIs + paired significance tests.
             "ndcg_raw_by_turn": {f"T{t}": [round(x, 4) for x in ndcg[s][t]] for t in turns},
         }
-    print(f"\nT1 human(Conle)-vs-LLM judge:  Cohen/Fleiss kappa={t1_kappa}  "
-          f"raw_agreement={t1_agree}  (n={len(t1_items)} doc judgments)")
+    if t1_report:
+        sub = t1_report["judged_subset"]
+        print(f"\nT1 human(Conle)-vs-LLM judge  (n={t1_report['n_judgments']} doc judgments)")
+        print(f"  all pairs      : raw={t1_report['raw_agreement_binary']}  "
+              f"Cohen_bin={t1_report['kappa_binary_cohen']}  "
+              f"PABAK={t1_report['pabak_binary']}  "
+              f"Fleiss_ord3={t1_report['kappa_ordinal_fleiss3']}")
+        print(f"  human-labelled : n={sub['n']}  raw={sub['raw_agreement_binary']}  "
+              f"Cohen_bin={sub['kappa_binary_cohen']}  PABAK={sub['pabak_binary']}")
+        print(f"  {t1_report['n_pooling_default']} of {t1_report['n_judgments']} pairs "
+              f"carry no explicit human label (pooling default = irrelevant); "
+              f"read the headline kappa with that in mind.")
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     json.dump({"config": vars(args), "n_conversations": len(convs),
-               "t1_human_vs_llm": {"kappa": t1_kappa, "raw_agreement": t1_agree,
-                                   "n_judgments": len(t1_items)},
+               "t1_human_vs_llm": t1_report,
                "results": results},
               open(args.out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"\nSaved -> {args.out}")
