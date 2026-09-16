@@ -53,6 +53,18 @@ ORACLE_MODEL = "Qwen/Qwen2.5-72B-Instruct"
 JUDGE_MODEL  = "meta-llama/Llama-3.3-70B-Instruct"
 RETRY = [0, 5, 15]
 
+# ---- judge protocol (see run_judge_v2.py and docs/HANDOFF_ictai_camera_ready.md) ----
+# v1 (original runs -> mtrag_gen.json, mtrag_gen_round2.json): max_tokens=20; any reply without a
+#    parseable number silently became 0.5 (21-27% of stored scores were such parse fallbacks).
+# v2 (DEFAULT; -> mtrag_gen_v2_r{1,2}.json): one extra instruction line, max_tokens=64, first-number
+#    parser (decimal comma accepted), NA (None) when no number, up to 3 attempts with backoff on API
+#    errors, NEVER a 0.5 fallback. Aggregates are means over non-NA units and n_na is reported.
+JUDGE_PROTOCOL_DEFAULT = "v2"
+JUDGE_SUFFIX_V2 = "\nResponda apenas com um número entre 0.0 e 1.0."
+JUDGE_MAX_TOKENS = {"v1": 20, "v2": 64}
+JUDGE_BACKOFF_V2 = [0, 2, 6]
+_NUM_V2 = re.compile(r"(?<![\d.,])(1[.,]0+|0[.,]\d+|[01])(?![\d,%]|[.,]\d)")
+
 # Slugs forced to DeepInfra even though a hint below would otherwise route them
 # to OpenRouter (the DeepInfra Qwen slug also starts with "qwen/").
 _DEEPINFRA_FORCE = {"Qwen/Qwen2.5-72B-Instruct"}
@@ -81,16 +93,30 @@ def gen_with_retry(rag, query, reranked):
     return ""
 
 
-def judge_score(client, model, prompt):
-    """One judge call returning a float 0-1 (robust parse)."""
-    try:
-        resp = client.chat.completions.create(
-            model=model, messages=[{"role": "user", "content": prompt}],
-            temperature=0, max_tokens=20)
-        m = re.search(r"(0?\.\d+|1\.0|0|1)", resp.choices[0].message.content.strip())
-        return max(0.0, min(1.0, float(m.group(1)))) if m else 0.5
-    except Exception:
-        return 0.5
+def judge_score(client, model, prompt, protocol=JUDGE_PROTOCOL_DEFAULT):
+    """One judge call -> score in [0,1]. v1: legacy behaviour (0.5 on any failure).
+    v2: NA (None) when the reply has no number; API errors retried with backoff, then NA."""
+    if protocol == "v1":
+        try:
+            resp = client.chat.completions.create(
+                model=model, messages=[{"role": "user", "content": prompt}],
+                temperature=0, max_tokens=JUDGE_MAX_TOKENS["v1"])
+            m = re.search(r"(0?\.\d+|1\.0|0|1)", resp.choices[0].message.content.strip())
+            return max(0.0, min(1.0, float(m.group(1)))) if m else 0.5
+        except Exception:
+            return 0.5
+    for delay in JUDGE_BACKOFF_V2:
+        if delay:
+            time.sleep(delay)
+        try:
+            resp = client.chat.completions.create(
+                model=model, messages=[{"role": "user", "content": prompt + JUDGE_SUFFIX_V2}],
+                temperature=0, max_tokens=JUDGE_MAX_TOKENS["v2"])
+            m = _NUM_V2.search((resp.choices[0].message.content or "").strip())
+            return max(0.0, min(1.0, float(m.group(1).replace(",", ".")))) if m else None
+        except Exception:
+            continue
+    return None
 
 
 def faith_prompt(answer, context):
@@ -111,16 +137,26 @@ def main():
     ap.add_argument("--models", nargs="+", default=SLM_MODELS)
     ap.add_argument("--oracle", default=ORACLE_MODEL)
     ap.add_argument("--judge", default=JUDGE_MODEL)
+    ap.add_argument("--judge-protocol", choices=["v1", "v2"], default=JUDGE_PROTOCOL_DEFAULT,
+                    help="v2 (default): number-only instruction, max_tokens=64, NA on parse failure, "
+                         "retries. v1: legacy protocol that produced mtrag_gen.json (0.5 fallback).")
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--workers", type=int, default=32)
     ap.add_argument("--out", default="results/mtrag_gen.json")
     ap.add_argument("--score-oracle", action="store_true",
                     help="Also judge the oracle's own answers on the reference-less "
                          "faithfulness axis (within-family scale anchor for the paper)")
+    ap.add_argument("--gen-cache", default=None,
+                    help="Generation cache to REUSE (default: results/cache/gen_<out>.json). "
+                         "Use with a new --out to re-judge the SAME answers without regenerating.")
+    ap.add_argument("--judge-cache", default=None,
+                    help="Judge cache path (default: results/cache/judge_<out>.json). "
+                         "A fresh path forces a clean judging round (no cached scores).")
     args = ap.parse_args()
 
     print(f"\n{'='*68}\nMULTI-TURN GENERATION EVAL (Ulysses-MTRAG)\n{'='*68}")
-    print(f"models={len(args.models)} | oracle={args.oracle} | judge={args.judge} | workers={args.workers}")
+    print(f"models={len(args.models)} | oracle={args.oracle} | judge={args.judge} "
+          f"(protocol {args.judge_protocol}) | workers={args.workers}")
 
     loader = DataLoader(); bills, _ = loader.load_all()
     print(f"  {len(bills):,} bills")
@@ -150,7 +186,7 @@ def main():
     # ---- generate: cached + flattened for parallelism + RESUME ----
     # Cache keyed by (conv, turn, model); only missing/empty answers are (re)generated,
     # and the cache is flushed periodically so a crash/blip never loses prior work.
-    cache_path = Path("results/cache") / f"gen_{Path(args.out).stem}.json"
+    cache_path = Path(args.gen_cache) if args.gen_cache else Path("results/cache") / f"gen_{Path(args.out).stem}.json"
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache = json.load(open(cache_path, encoding="utf-8")) if cache_path.exists() else {}
     ckey = lambda ci, tn, m: f"{ci}|{tn}|{m}"
@@ -188,7 +224,7 @@ def main():
 
     # ---- judge FAITH (reference-less) + FANC (vs oracle), parallel + cached ----
     judge = get_rag(args.judge)._client
-    jcache_path = Path("results/cache") / f"judge_{Path(args.out).stem}.json"
+    jcache_path = Path(args.judge_cache) if args.judge_cache else Path("results/cache") / f"judge_{Path(args.out).stem}.json"
     jcache = json.load(open(jcache_path, encoding="utf-8")) if jcache_path.exists() else {}
     jkey = lambda ci, tn, m: f"{ci}|{tn}|{m}"
     faith, fanc = {}, {}
@@ -197,11 +233,11 @@ def main():
         ui, model = job
         ci, tn, q, ctx, reranked = units[ui]
         ans = gen[(ui, model)]
-        fa = judge_score(judge, args.judge, faith_prompt(ans, ctx))
+        fa = judge_score(judge, args.judge, faith_prompt(ans, ctx), args.judge_protocol)
         if model == args.oracle:  # oracle: faithfulness only (no self-reference FANC)
             return ui, model, fa, 0.0
         ref = gen[(ui, args.oracle)]
-        return ui, model, fa, judge_score(judge, args.judge, fanc_prompt(ans, ref))
+        return ui, model, fa, judge_score(judge, args.judge, fanc_prompt(ans, ref), args.judge_protocol)
 
     judged_models = list(args.models) + ([args.oracle] if args.score_oracle else [])
     sjobs = []
@@ -236,8 +272,12 @@ def main():
         gm = evaluate_generation(preds, refs, lang="pt")
         sim[m] = (gm.bertscore_f1_scores, gm.rouge_l_scores)
 
-    # ---- aggregate per model (overall + by turn) ----
-    avg = lambda l: round(sum(l) / len(l), 4) if l else 0.0
+    # ---- aggregate per model (overall + by turn); NA-aware (protocol v2 may yield None) ----
+    def avg(l):
+        v = [x for x in l if x is not None]
+        return round(sum(v) / len(v), 4) if v else None
+    n_na = lambda l: sum(1 for x in l if x is None)
+    r4 = lambda x: None if x is None else round(x, 4)
     results = {}
     for m in args.models:
         bert, rouge = sim[m]
@@ -249,12 +289,14 @@ def main():
             by_turn[tn]["faith"].append(faith[(ui, m)]); by_turn[tn]["fanc"].append(fanc[(ui, m)])
             by_turn[tn]["bert"].append(bert[ui]); by_turn[tn]["rouge"].append(rouge[ui])
             F.append(faith[(ui, m)]); N.append(fanc[(ui, m)]); B.append(bert[ui]); R.append(rouge[ui])
-            per_unit.append({"ci": ci, "tn": tn, "faith": round(faith[(ui, m)], 4),
+            per_unit.append({"ci": ci, "tn": tn, "faith": r4(faith[(ui, m)]), "fanc": r4(fanc[(ui, m)]),
                              "bert": round(bert[ui], 4), "rouge": round(rouge[ui], 4)})
         results[m] = {
             "faithfulness": avg(F), "fanc": avg(N), "bertscore_f1": avg(B), "rouge_l": avg(R),
+            "n_na": {"faith": n_na(F), "fanc": n_na(N)},
             "by_turn": {f"T{t}": {"faith": avg(by_turn[t]["faith"]), "fanc": avg(by_turn[t]["fanc"]),
-                                  "bert": avg(by_turn[t]["bert"]), "rouge": avg(by_turn[t]["rouge"])}
+                                  "bert": avg(by_turn[t]["bert"]), "rouge": avg(by_turn[t]["rouge"]),
+                                  "n_na_faith": n_na(by_turn[t]["faith"]), "n_na_fanc": n_na(by_turn[t]["fanc"])}
                         for t in sorted(by_turn)},
             "per_unit": per_unit,
         }
@@ -267,16 +309,22 @@ def main():
         results["__oracle__"] = {
             "model": args.oracle, "faithfulness": avg(of),
             "faith_by_turn": {f"T{t}": avg(v) for t, v in sorted(obt.items())},
+            "n_na": n_na(of), "n_na_by_turn": {f"T{t}": n_na(v) for t, v in sorted(obt.items())},
+            "per_unit": [{"ci": units[ui][0], "tn": units[ui][1], "faith": r4(faith[(ui, args.oracle)])}
+                         for ui in range(len(units))],
         }
-        print(f"\nORACLE ({args.oracle}) reference-less faithfulness: {avg(of):.3f}  "
-              + "  ".join(f"T{t}={avg(v):.3f}" for t, v in sorted(obt.items())))
+        f3 = lambda x: "  NA " if x is None else f"{x:.3f}"
+        print(f"\nORACLE ({args.oracle}) reference-less faithfulness: {f3(avg(of))}  "
+              + "  ".join(f"T{t}={f3(avg(v))}" for t, v in sorted(obt.items()))
+              + f"  (n_na={n_na(of)})")
 
-    print(f"\n{'='*68}\nGENERATION QUALITY by model\n{'='*68}")
-    print(f"{'model':<34}{'Faith':>8}{'FANC':>8}{'BERT':>8}{'ROUGE-L':>9}")
-    print("-" * 67)
-    for m in sorted(args.models, key=lambda x: results[x]["faithfulness"], reverse=True):
+    f3 = lambda x: "  NA " if x is None else f"{x:.3f}"
+    print(f"\n{'='*68}\nGENERATION QUALITY by model (judge protocol {args.judge_protocol})\n{'='*68}")
+    print(f"{'model':<34}{'Faith':>8}{'n_na':>6}{'FANC':>8}{'BERT':>8}{'ROUGE-L':>9}")
+    print("-" * 73)
+    for m in sorted(args.models, key=lambda x: results[x]["faithfulness"] or -1, reverse=True):
         r = results[m]
-        print(f"{m.split('/')[-1][:32]:<34}{r['faithfulness']:>8.3f}{r['fanc']:>8.3f}"
+        print(f"{m.split('/')[-1][:32]:<34}{f3(r['faithfulness']):>8}{r['n_na']['faith']:>6}{f3(r['fanc']):>8}"
               f"{r['bertscore_f1']:>8.3f}{r['rouge_l']:>9.3f}")
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)

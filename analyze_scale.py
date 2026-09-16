@@ -3,14 +3,23 @@ import json, random
 random.seed(42)
 mean = lambda v: sum(v) / len(v)
 
-d = json.load(open("results/mtrag_gen.json", encoding="utf-8"))
+import sys as _sys
+# Optional positional overrides (additive): analyze_scale.py [GEN_JSON] [JUDGE_CACHE_JSON]
+_GEN = _sys.argv[1] if len(_sys.argv) > 1 else "results/mtrag_gen.json"
+_CACHE = _sys.argv[2] if len(_sys.argv) > 2 else "results/cache/judge_mtrag_gen.json"
+print(f"[inputs] gen={_GEN}  cache={_CACHE}")
+d = json.load(open(_GEN, encoding="utf-8"))
 R = d["results"]
 oracle = R["__oracle__"]["model"]
-cache = json.load(open("results/cache/judge_mtrag_gen.json", encoding="utf-8"))
+cache = json.load(open(_CACHE, encoding="utf-8"))
 
 
 def faith_of(m):
     if m == oracle:
+        # v2 files (and files patched by rewrite_oracle_per_unit.py) carry the oracle per_unit
+        # aligned with the other models; fall back to the legacy judge-cache layout otherwise.
+        if "per_unit" in R["__oracle__"]:
+            return [u["faith"] for u in R["__oracle__"]["per_unit"]]
         out = []
         for u in R["qwen/qwen3-8b"]["per_unit"]:
             k = f"{u['ci']}|{u['tn']}|{oracle}"

@@ -141,6 +141,12 @@ def main():
                     help="Top chunks retrieved before collapsing to docs")
     ap.add_argument("--conditions", nargs="+", default=ALL_CONDITIONS,
                     choices=ALL_CONDITIONS)
+    ap.add_argument("--dense-batch", type=int, default=None,
+                    help="Corpus-encoding batch size for the dense conditions (default: library "
+                         "default 32). dense_fulldoc needs 8 on a 4 GB GPU (32 -> CUDA OOM).")
+    ap.add_argument("--out", type=Path, default=OUT_PATH,
+                    help="Output JSON. If it exists, results are MERGED per condition "
+                         "(existing conditions not re-run are preserved) — never overwritten.")
     args = ap.parse_args()
 
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -176,7 +182,7 @@ def main():
     if "dense_fulldoc" in args.conditions:
         print("\n[dense_fulldoc] embedding full doc text (8192-token BGE cap applies) ...")
         full_bills = clone_with_ementa_as_fulltext(bills)
-        ret = DenseRetriever(full_bills, model_name=BGE_M3_MODEL)
+        ret = DenseRetriever(full_bills, model_name=BGE_M3_MODEL, batch_size=args.dense_batch)
         ret.build_index(cache_path=CACHE_DIR / "dense_fulldoc.pkl")
         fn = lambda q: [r.bill.name for r in ret.retrieve(q.text, top_k=args.top_docs)]
         results["dense_fulldoc"] = score(queries, fn)
@@ -207,12 +213,30 @@ def main():
             print(f"{cond:<16}{r['nDCG@5']:>9.4f}{r['nDCG@10']:>9.4f}{r['MRR']:>8.4f}"
                   f"{r['Recall@10']:>11.4f}{r['MAP']:>8.4f}")
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump({"config": vars(args), "n_queries": len(queries),
-                   "n_docs": len(bills), "results": results}, f,
-                  ensure_ascii=False, indent=2)
-    print(f"\nSaved -> {OUT_PATH}")
+    # Merge per condition: keep previously stored conditions, record per-condition
+    # provenance (config + run time) so a partial re-run never destroys earlier rows.
+    import datetime
+    out_path: Path = args.out
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    merged = {"n_queries": len(queries), "n_docs": len(bills), "results": {}, "runs": {}}
+    if out_path.exists():
+        try:
+            prev = json.load(open(out_path, encoding="utf-8"))
+            merged["results"].update(prev.get("results", {}))
+            merged["runs"].update(prev.get("runs", {}))
+            if "config" in prev and not merged["runs"]:      # legacy single-config file
+                for cond in prev.get("results", {}):
+                    merged["runs"][cond] = {"config": prev["config"], "run_at": "legacy"}
+        except Exception as e:
+            print(f"  (could not read existing {out_path}: {e}; starting fresh)")
+    cfg = {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items()}
+    stamp = datetime.datetime.now().isoformat(timespec="seconds")
+    for cond, r in results.items():
+        merged["results"][cond] = r
+        merged["runs"][cond] = {"config": cfg, "run_at": stamp}
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(merged, f, ensure_ascii=False, indent=2)
+    print(f"\nSaved -> {out_path}  (conditions in file: {sorted(merged['results'])})")
     return 0
 
 
