@@ -19,9 +19,31 @@
   },
   "n_conversations": 100,
   "t1_human_vs_llm": {
+    "n_judgments": 1000,
+    "raw_agreement_binary": 0.692,
+    "kappa_binary_cohen": 0.3525,
+    "pabak_binary": 0.384,
+    "kappa_ordinal_fleiss3": 0.2584,
     "kappa": 0.2584,
     "raw_agreement": 0.692,
-    "n_judgments": 1000
+    "direction": {
+      "judge_more_lenient": 263,
+      "judge_more_strict": 45
+    },
+    "n_human_labeled": 634,
+    "n_pooling_default": 366,
+    "judged_subset": {
+      "n": 634,
+      "raw_agreement_binary": 0.8722,
+      "kappa_binary_cohen": 0.4876,
+      "pabak_binary": 0.7445,
+      "kappa_ordinal_fleiss3": 0.2769,
+      "direction": {
+        "judge_more_lenient": 36,
+        "judge_more_strict": 45
+      }
+    },
+    "source": "recomputed from the per-pair dump; judge scores read verbatim, no LLM call"
   },
   "results": {
     "lastturn": {

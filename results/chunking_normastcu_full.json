@@ -1,0 +1,74 @@
+{
+  "n_queries": 46,
+  "n_docs": 14469,
+  "results": {
+    "bm25": {
+      "nDCG@5": 0.2873,
+      "nDCG@10": 0.3279,
+      "MRR": 0.4544,
+      "Recall@10": 0.339,
+      "MAP": 0.2037
+    },
+    "dense_summary": {
+      "nDCG@5": 0.0,
+      "nDCG@10": 0.0,
+      "MRR": 0.0,
+      "Recall@10": 0.0,
+      "MAP": 0.0
+    },
+    "dense_fulldoc": {
+      "nDCG@5": 0.2644,
+      "nDCG@10": 0.2889,
+      "MRR": 0.4037,
+      "Recall@10": 0.2864,
+      "MAP": 0.2036
+    }
+  },
+  "runs": {
+    "bm25": {
+      "config": {
+        "max_doc_chars": 30000,
+        "chunk_size": 3000,
+        "overlap": 400,
+        "top_docs": 10,
+        "chunk_pool": 100,
+        "conditions": [
+          "bm25",
+          "dense_summary"
+        ],
+        "out": "results\\chunking_normastcu_full.json"
+      },
+      "run_at": "2026-09-05T12:20:01"
+    },
+    "dense_summary": {
+      "config": {
+        "max_doc_chars": 30000,
+        "chunk_size": 3000,
+        "overlap": 400,
+        "top_docs": 10,
+        "chunk_pool": 100,
+        "conditions": [
+          "bm25",
+          "dense_summary"
+        ],
+        "out": "results\\chunking_normastcu_full.json"
+      },
+      "run_at": "2026-09-05T12:20:01"
+    },
+    "dense_fulldoc": {
+      "config": {
+        "max_doc_chars": 30000,
+        "chunk_size": 3000,
+        "overlap": 400,
+        "top_docs": 10,
+        "chunk_pool": 100,
+        "conditions": [
+          "dense_fulldoc"
+        ],
+        "dense_batch": 8,
+        "out": "results\\chunking_normastcu_full.json"
+      },
+      "run_at": "2026-09-08T21:43:30"
+    }
+  }
+}

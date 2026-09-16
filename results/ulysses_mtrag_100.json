@@ -1,14 +1,15 @@
 {
   "metadata": {
     "name": "Ulysses-MTRAG",
-    "version": "0.1.0-synthetic",
+    "version": "1.0.0",
     "description": "Synthetic multi-turn legislative RAG benchmark. Extension of Ulysses-RFCorpus (Vitório et al., LRE 2024). Methodology: MTRAG-synthetic (Katsis et al., TACL 2025).",
     "n_conversations": 100,
     "n_turns_per_conv": 4,
     "generator_model": "qwen/qwen-2.5-72b-instruct",
-    "judge_model": "phi3:medium",
+    "judge_model": "meta-llama/Llama-3.3-70B-Instruct",
     "base_corpus": "Ulysses-RFCorpus (Vitório et al., 2024)",
-    "license": "CC BY 4.0 (same as base corpus)"
+    "rewrite_model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "metadata_note": "metadata corrected for release: judge_model previously held the prototype default 'phi3:medium'; the judge used in all evaluations is the one recorded in mtrag_eval*.json config. The 'license' field was removed: see the repository README/LICENSE (generated turns, labels and judgments: CC BY 4.0; code: MIT; the Ulysses-RFCorpus seed queries and bills are not redistributed)."
   },
   "conversations": [
     {

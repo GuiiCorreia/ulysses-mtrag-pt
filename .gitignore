@@ -34,3 +34,7 @@ annotation_deploy/annotations/
 Thumbs.db
 .vscode/
 .idea/
+
+# Released judgment caches (raw judge replies) and per-pair judgment dumps
+!results/cache/*.json
+!results/mtrag_judgments*.csv
