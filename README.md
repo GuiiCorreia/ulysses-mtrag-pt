@@ -20,6 +20,7 @@ distinct from the generator, and audited against the expert labels.
 
 ```
 results/ulysses_mtrag_100.json      THE BENCHMARK (100 sessions x 4 turns, seed ids, turn types)
+data/                               Ulysses-RFCorpus material the sessions draw on: bills, expert relevance labels, seed queries (see data/README.md, NOTICE)
 src/mestrado/                       core package (data, retrieval, generation, synthetic, metrics)
 run_generate_mtrag.py               build the benchmark from the seed corpus
 run_eval_mtrag.py                   multi-turn retrieval: 4 context strategies x {BGE-M3, BM25}, pooled LLM judgments
@@ -71,7 +72,8 @@ identical model ranking. `--judge-protocol v1` reproduces the legacy behaviour.
 ```bash
 uv sync                          # Python 3.12
 cp .env.example .env             # DEEPINFRA_API_KEY (+ OPENROUTER_API_KEY)
-# Ulysses-RFCorpus files at the repo root: bills_dataset.csv, relevance_feedback_dataset.csv
+# data/ ships the session subset of the corpus (enough to reproduce every statistic in results/);
+# to re-index the whole collection, download the complete corpus from the Hugging Face mirror into data/ (see data/README.md)
 
 # Retrieval (Table III): dense, then lexical
 uv run python run_eval_mtrag.py --conversations results/ulysses_mtrag_100.json --provider deepinfra \
@@ -100,15 +102,9 @@ files are anonymized to `A1`, `A2` with `anonymize_annotations.py` before releas
 
 ## Data and release form
 
-Release form: generated turns with turn-type and answerability tags, seed-query and bill
-identifiers, LLM-judge relevance judgments, prompts, and code; the corpus itself is not
-redistributed and is re-linked by identifier.
+Release form: the benchmark in full — the generated turns with turn-type and answerability tags, the seed queries, the bills and the experts' relevance labels the 100 sessions draw on, the LLM-judge relevance and faithfulness judgments, the prompts, the code, and the final metric outputs, so every table and figure regenerates without re-issuing the paid LLM calls.
 
-The seed queries and the bills belong to Ulysses-RFCorpus (Vitório et al., *Language
-Resources and Evaluation* 59:1257–1277, 2025) and are obtained from that source; place
-`bills_dataset.csv` and `relevance_feedback_dataset.csv` at the repository root to re-link
-`seed_query_id` and bill identifiers. NormasTCU (Table I only):
-https://huggingface.co/datasets/ufca-llms/normas-tcu.
+The seed queries, the bills and the experts' relevance labels come from Ulysses-RFCorpus (Vitório et al., *Language Resources and Evaluation* 59:1257–1277, 2025) and are redistributed here with attribution to that release, as authorised by one of its authors; see `NOTICE`. `data/` carries the subset the 100 sessions draw on — the complete 105,669-bill collection is obtained at the source. NormasTCU (Table I only): https://huggingface.co/datasets/ufca-llms/normas-tcu. The complete collection (105,669 bills, 1.7 GB) and the full expert-label file are mirrored, unmodified, as a Hugging Face dataset: <HF_DATASET_URL>.
 
 ## Citation
 
@@ -133,5 +129,4 @@ https://huggingface.co/datasets/ufca-llms/normas-tcu.
   faithfulness judgments** (`results/ulysses_mtrag_100.json`, `results/mtrag_judgments*.csv`,
   `results/cache/judge_*.json`, `results/mtrag_eval*.json`, `results/mtrag_gen*.json`):
   CC BY 4.0.
-- **Seed queries and bills**: not ours and not redistributed — they belong to Ulysses-RFCorpus
-  (Vitório et al.) and are obtained at the source; this repository only carries their identifiers.
+- **Seed queries, bills and expert relevance labels** (`data/`): from Ulysses-RFCorpus (Vitório et al.), redistributed with attribution as authorised by one of its authors — see `NOTICE`. The terms of the original release apply.

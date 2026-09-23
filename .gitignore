@@ -38,3 +38,10 @@ Thumbs.db
 # Released judgment caches (raw judge replies) and per-pair judgment dumps
 !results/cache/*.json
 !results/mtrag_judgments*.csv
+
+# Redistributed corpus (see NOTICE)
+!data/
+!data/*.csv
+!data/*.csv.gz
+!data/README.md
+uv.lock

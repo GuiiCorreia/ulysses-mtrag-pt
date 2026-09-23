@@ -1,0 +1,98 @@
+{
+  "built_at": "2026-09-22T23:56:31",
+  "sources": {
+    "bills": "bills_dataset.csv",
+    "feedback": "relevance_feedback_dataset.csv",
+    "benchmark": "results/ulysses_mtrag_100.json",
+    "dumps": [
+      "results/mtrag_judgments.csv",
+      "results/mtrag_judgments_bm25.csv"
+    ]
+  },
+  "bill_ids_from_benchmark_json": 0,
+  "bill_ids_per_dump": {
+    "results/mtrag_judgments.csv": 3198,
+    "results/mtrag_judgments_bm25.csv": 981
+  },
+  "bill_ids_union_artifacts": 3772,
+  "bill_ids_incl_expert_labels": 4312,
+  "bills_written": 4268,
+  "bills_missing_in_source": [
+    "LEI 10671/2003",
+    "LEI 13912/2019",
+    "MP 1070/2021",
+    "MP 996/2020",
+    "MPV 1027/2021",
+    "MPV 1072/2021",
+    "MPV 1103/2022",
+    "MPV 1105/2020",
+    "MPV 1121/2022",
+    "MPV 621/2013",
+    "MPV 759/2016",
+    "MPV 910/2019",
+    "PEC 18/2021",
+    "PEC 215/2000",
+    "PEC 321/2001",
+    "PEC 354/2001",
+    "PEC 535/2011",
+    "PEC 80/1995",
+    "PL 15724/2007",
+    "PL 1701/1989",
+    "PL 1735/2022",
+    "PL 1803/2022",
+    "PL 2027/1996",
+    "PL 2668/1976",
+    "PL 2721/2021",
+    "PL 2781/2021",
+    "PL 3712/2003",
+    "PL 3768/1989",
+    "PL 41969/2012",
+    "PL 452/1988",
+    "PL 4962/2001",
+    "PL 5004/2019",
+    "PL 5071/1990",
+    "PL 5350/1978",
+    "PL 6690/1985",
+    "PL 7/2007",
+    "PL 7118/1985",
+    "PL 8421/2015",
+    "PL 991/1968",
+    "PLP 411/2021",
+    "REQ 399/2022",
+    "REQ 44/2022",
+    "REQ 8972/2018",
+    "RIC 450/2022"
+  ],
+  "seed_queries": 100,
+  "feedback_rows_written": 100,
+  "seed_ids_missing_in_feedback": [],
+  "sizes_bytes": {
+    "bills_sessions.csv": 104411049,
+    "relevance_feedback_sessions.csv": 147811,
+    "seed_queries.csv": 11730
+  },
+  "sha256": {
+    "bills_sessions.csv": "abb8f65b04d12af2a8b902b798fa05ce44c88e4f961b71deaa195d1d04fe3218",
+    "relevance_feedback_sessions.csv": "32916fa7eadccc84c5fcd874b0bd6b0fdd2cf0abfe7a309e640ce5f4a419cc20",
+    "seed_queries.csv": "5693fbe9acd4d86e69acf02e85a529517404169a2fae7b4502b4cc32009508e6"
+  },
+  "bill_columns": [
+    "code",
+    "sig_tipo",
+    "name",
+    "txt_ementa",
+    "em_tramitacao",
+    "situacao",
+    "text",
+    "text_preprocessed"
+  ],
+  "feedback_columns": [
+    "id",
+    "query",
+    "user_feedback",
+    "extra_results",
+    "date_created",
+    "num_doc_feedback",
+    "extra_results_size"
+  ]
+}

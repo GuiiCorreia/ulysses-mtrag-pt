@@ -130,10 +130,25 @@ class SLMComparisonConfig:
         return [m.strip() for m in self.slm_models_str.split(",") if m.strip()]
 
 
+def _corpus_file(env_var: str, *candidates: str) -> Path:
+    """Resolve a corpus file. $ENV wins if set. Otherwise the first existing candidate, in order:
+    the full collection (data/ or repo root, obtained from the Hugging Face mirror / Ulysses-RFCorpus),
+    then the session subset shipped in data/ (enough to reproduce every statistic in results/)."""
+    explicit = os.getenv(env_var)
+    if explicit:
+        return _PROJECT_ROOT / explicit
+    for c in candidates:
+        if (_PROJECT_ROOT / c).exists():
+            return _PROJECT_ROOT / c
+    return _PROJECT_ROOT / candidates[-1]
+
+
 class DataConfig:
     project_root: Path = _PROJECT_ROOT
-    bills_path: Path = _PROJECT_ROOT / os.getenv("BILLS_DATASET_PATH", "bills_dataset.csv")
-    feedback_path: Path = _PROJECT_ROOT / os.getenv("FEEDBACK_DATASET_PATH", "relevance_feedback_dataset.csv")
+    bills_path: Path = _corpus_file("BILLS_DATASET_PATH", "data/bills_dataset.csv", "bills_dataset.csv",
+                                    "data/bills_sessions.csv", "data/bills_sessions.csv.gz")
+    feedback_path: Path = _corpus_file("FEEDBACK_DATASET_PATH", "data/relevance_feedback_dataset.csv",
+                                       "relevance_feedback_dataset.csv", "data/relevance_feedback_sessions.csv")
     # BGE-M3 is the default for this branch (Chen et al. 2024, arXiv:2402.03216)
     # Alternatives: paraphrase-multilingual-MiniLM-L12-v2 | intfloat/multilingual-e5-large
     embedding_model: str = os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")

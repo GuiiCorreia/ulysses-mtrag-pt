@@ -1,0 +1,9 @@
+NOTICE
+
+This repository redistributes material from Ulysses-RFCorpus:
+
+  Vitório, D.; Souza, E.; Martins, L.; da Silva, N. F. F.; de Carvalho, A. C. P. L. F.; Oliveira, A. L. I.; de Andrade, F. E. "Building a relevance feedback corpus for legal information retrieval in the real-case scenario of the Brazilian Chamber of Deputies." Language Resources and Evaluation 59:1257-1277, 2025. doi:10.1007/s10579-024-09767-3
+
+The files under data/ -- the seed queries, the bills and the experts' relevance labels that the 100 Ulysses-MTRAG sessions draw on -- originate from that collection and are redistributed here with attribution, as authorised by one of its authors. The terms of the original release apply to them.
+
+Everything else in this repository is covered by LICENSE (code, MIT) and by the CC BY 4.0 terms stated in README.md (generated turns, turn-type and answerability tags, and our LLM-judge relevance and faithfulness judgments).

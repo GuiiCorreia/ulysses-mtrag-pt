@@ -75,7 +75,10 @@ class DataLoader:
         # Increase CSV field size limit for large text fields (full legislative text)
         csv.field_size_limit(10000000)  # 10MB limit per field
 
-        with open(self.bills_path, encoding="utf-8", newline="") as f:
+        # data/bills_sessions.csv.gz (the redistributed session subset) is read transparently.
+        _open = (lambda p: __import__("gzip").open(p, "rt", encoding="utf-8", newline="")) \
+            if str(self.bills_path).endswith(".gz") else (lambda p: open(p, encoding="utf-8", newline=""))
+        with _open(self.bills_path) as f:
             reader = csv.DictReader(f)
             for row in tqdm(reader, desc="Loading bills", unit=" bills"):
                 bill = Bill.from_csv_row(row)
