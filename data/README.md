@@ -41,7 +41,7 @@ The complete collection (105,669 bills, `bills_dataset.csv`, 1,783,223,874 bytes
 `f1672effb35a47969e99880327a2ea734e431fc97edf87e643a5d4f20c465d99`) and the full expert-label file
 (`relevance_feedback_dataset.csv`, 692 queries, SHA-256
 `9d9408dc8239ec3cb9cfa68e846eb828caac45d318446d25de19b81b3d200163`) are mirrored, unmodified, as a
-Hugging Face dataset: <HF_DATASET_URL>. Place them in this directory (or set `BILLS_DATASET_PATH` /
+Hugging Face dataset: https://huggingface.co/datasets/GuiiCorreia/ulysses-rfcorpus-mtrag. Place them in this directory (or set `BILLS_DATASET_PATH` /
 `FEEDBACK_DATASET_PATH` in `.env`); the loader prefers the full files when present.
 
 ## Columns

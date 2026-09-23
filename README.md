@@ -104,7 +104,7 @@ files are anonymized to `A1`, `A2` with `anonymize_annotations.py` before releas
 
 Release form: the benchmark in full — the generated turns with turn-type and answerability tags, the seed queries, the bills and the experts' relevance labels the 100 sessions draw on, the LLM-judge relevance and faithfulness judgments, the prompts, the code, and the final metric outputs, so every table and figure regenerates without re-issuing the paid LLM calls.
 
-The seed queries, the bills and the experts' relevance labels come from Ulysses-RFCorpus (Vitório et al., *Language Resources and Evaluation* 59:1257–1277, 2025) and are redistributed here with attribution to that release, as authorised by one of its authors; see `NOTICE`. `data/` carries the subset the 100 sessions draw on — the complete 105,669-bill collection is obtained at the source. NormasTCU (Table I only): https://huggingface.co/datasets/ufca-llms/normas-tcu. The complete collection (105,669 bills, 1.7 GB) and the full expert-label file are mirrored, unmodified, as a Hugging Face dataset: <HF_DATASET_URL>.
+The seed queries, the bills and the experts' relevance labels come from Ulysses-RFCorpus (Vitório et al., *Language Resources and Evaluation* 59:1257–1277, 2025) and are redistributed here with attribution to that release, as authorised by one of its authors; see `NOTICE`. `data/` carries the subset the 100 sessions draw on — the complete 105,669-bill collection is obtained at the source. NormasTCU (Table I only): https://huggingface.co/datasets/ufca-llms/normas-tcu. The complete collection (105,669 bills, 1.7 GB) and the full expert-label file are mirrored, unmodified, as a Hugging Face dataset: https://huggingface.co/datasets/GuiiCorreia/ulysses-rfcorpus-mtrag.
 
 ## Citation
 
