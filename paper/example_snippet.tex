@@ -1,19 +1,104 @@
+% ------------------------------------------------------------
+% Fig. 1 — worked example as a chat-style diagram (TikZ).
+% Visual grammar: blue = human seed (expert-labeled, Ulysses-RFCorpus);
+% gray = LLM-generated turns; card border green = relevant,
+% amber = partially relevant (LLM-judge labels, cf. Sec. IV).
+% ------------------------------------------------------------
+\definecolor{seedblue}{HTML}{1565C0}
+\definecolor{seedfill}{HTML}{E9F1FB}
+\definecolor{genborder}{HTML}{9A9A9A}
+\definecolor{genfill}{HTML}{F4F4F4}
+\definecolor{relgreen}{HTML}{2E7D32}
+\definecolor{relgreenfill}{HTML}{EAF4EB}
+\definecolor{relamber}{HTML}{E5720A}
+\definecolor{relamberfill}{HTML}{FDF0E0}
+
 \begin{figure}[t]
-\small\setlength{\parindent}{0pt}
-\textbf{T1} \emph{(seed, human-labeled)}: \foreignlanguage{brazil}{``Criação de fundo para prevenção de desastres naturais e e recuperação de seus efeitos, para\ldots''}\\
-$\rightarrow$ top: \textbf{PL 295/2007} --- \emph{relevant}\\[3pt]
-\textbf{T2} \emph{(follow-up)}: \foreignlanguage{brazil}{``Quais são os principais critérios e mecanismos de distribuição dos recursos do fundo para\ldots''}\\
-$\rightarrow$ top: \textbf{PL 5067/2016} --- \emph{relevant}\\[3pt]
-\textbf{T3} \emph{(clarification)}: \foreignlanguage{brazil}{``Em quais situações específicas os recursos do fundo para prevenção de desastres naturais e\ldots''}\\
-$\rightarrow$ top: \textbf{PL 10898/2018} --- \emph{relevant}\\[3pt]
-\textbf{T4} \emph{(clarification)}: \foreignlanguage{brazil}{``Como são definidas as prioridades para a alocação de recursos do fundo em situações de\ldots''}\\
-$\rightarrow$ top: \textbf{PL 4450/2020} --- \emph{partially relevant}
-\caption{A worked example from Ulysses-MTRAG: a four-turn session seeded by a real
-Ulysses-RFCorpus query (T1, which additionally carries expert relevance labels)
-with LLM-generated follow-ups (T2--T4). For each turn we show the top retrieved
-bill and its LLM-judge relevance label. Queries are reproduced verbatim in the
-original Portuguese, including typos present in the source corpus. The retrieved
-bill \emph{shifts} across turns and degrades to only \emph{partially relevant} by
-T4.}
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  bubble/.style={rounded corners=3.5pt, inner xsep=5pt, inner ysep=4.5pt,
+                 text width=4.42cm, align=left},
+  seedbubble/.style={bubble, draw=seedblue, line width=0.9pt, fill=seedfill},
+  genbubble/.style={bubble, draw=genborder, line width=0.5pt, fill=genfill},
+  card/.style={rounded corners=2.5pt, inner xsep=4pt, inner ysep=3.5pt,
+               text width=1.78cm, align=center, line width=0.8pt},
+  chip/.style={rounded corners=2.4pt, inner xsep=3.2pt, inner ysep=1.7pt,
+               font=\tiny\bfseries},
+  hdr/.style={font=\tiny\scshape, text=black!55, align=center},
+  qarrow/.style={-{Stealth[length=1.5mm]}, black!45, line width=0.5pt},
+]
+
+% ---------- column headers ----------
+\node[hdr] at (3.15, 0.78) {session turns (verbatim Portuguese queries)};
+\node[hdr] at (7.32, 0.78) {top retrieved bill\\[-1.5pt](LLM-judge label)};
+
+% ---------- T1 : human seed ----------
+\node[seedbubble, anchor=north west] (b1) at (0.90, 0)
+  {\foreignlanguage{brazil}{``Cria\c{c}\~ao de fundo para preven\c{c}\~ao de
+   desastres naturais e e recupera\c{c}\~ao de seus efeitos, para\ldots''}};
+\node[chip, fill=seedblue, text=white, anchor=south west]
+  at ($(b1.north west)+(0.06,0.045)$) {T1 $\cdot$ seed};
+\node[chip, draw=seedblue, text=seedblue, fill=white, anchor=south west]
+  at ($(b1.north west)+(1.22,0.045)$) {real expert query $\cdot$ expert-labeled};
+\node[card, draw=relgreen, fill=relgreenfill] (c1) at (7.32,0 |- b1.center)
+  {\textbf{PL 295/2007}\\[-1pt] {\tiny\textcolor{relgreen}{\textbf{relevant}}}};
+\draw[qarrow] (b1.east) -- (c1.west);
+
+% ---------- T2 ----------
+\node[genbubble, anchor=north west] (b2) at ($(b1.south west)+(0,-0.56)$)
+  {\foreignlanguage{brazil}{``Quais s\~ao os principais crit\'erios e mecanismos
+   de distribui\c{c}\~ao dos recursos do fundo para\ldots''}};
+\node[chip, fill=genborder, text=white, anchor=south west]
+  at ($(b2.north west)+(0.06,0.045)$) {T2 $\cdot$ follow-up};
+\node[card, draw=relgreen, fill=relgreenfill] (c2) at (7.32,0 |- b2.center)
+  {\textbf{PL 5067/2016}\\[-1pt] {\tiny\textcolor{relgreen}{\textbf{relevant}}}};
+\draw[qarrow] (b2.east) -- (c2.west);
+
+% ---------- T3 ----------
+\node[genbubble, anchor=north west] (b3) at ($(b2.south west)+(0,-0.56)$)
+  {\foreignlanguage{brazil}{``Em quais situa\c{c}\~oes espec\'ificas os recursos
+   do fundo para preven\c{c}\~ao de desastres naturais e\ldots''}};
+\node[chip, fill=genborder, text=white, anchor=south west]
+  at ($(b3.north west)+(0.06,0.045)$) {T3 $\cdot$ clarification};
+\node[card, draw=relgreen, fill=relgreenfill] (c3) at (7.32,0 |- b3.center)
+  {\textbf{PL 10898/2018}\\[-1pt] {\tiny\textcolor{relgreen}{\textbf{relevant}}}};
+\draw[qarrow] (b3.east) -- (c3.west);
+
+% ---------- T4 ----------
+\node[genbubble, anchor=north west] (b4) at ($(b3.south west)+(0,-0.56)$)
+  {\foreignlanguage{brazil}{``Como s\~ao definidas as prioridades para a
+   aloca\c{c}\~ao de recursos do fundo em situa\c{c}\~oes de\ldots''}};
+\node[chip, fill=genborder, text=white, anchor=south west]
+  at ($(b4.north west)+(0.06,0.045)$) {T4 $\cdot$ clarification};
+\node[card, draw=relamber, fill=relamberfill] (c4) at (7.32,0 |- b4.center)
+  {\textbf{PL 4450/2020}\\[-1pt] {\tiny\textcolor{relamber}{\textbf{partially relevant}}}};
+\draw[qarrow] (b4.east) -- (c4.west);
+
+% ---------- user icons ----------
+\foreach \b in {b1,b2,b3,b4}{
+  \fill[black!40] ($(\b.west)+(-0.38,0.125)$) circle (0.095);
+  \fill[black!40] ($(\b.west)+(-0.38,-0.09)$) ellipse [x radius=0.16, y radius=0.12];
+}
+
+% ---------- provenance braces ----------
+\draw[decorate, decoration={brace, amplitude=2.6pt}, seedblue, line width=0.7pt]
+  ($(b1.north west)+(-0.72,0.33)$) -- ($(b1.south west)+(-0.72,0)$);
+\node[font=\tiny\bfseries, text=seedblue, rotate=90, anchor=south]
+  at ($(b1.west)+(-0.82,0)$) {human};
+\draw[decorate, decoration={brace, amplitude=2.6pt}, black!55, line width=0.7pt]
+  ($(b2.north west)+(-0.72,0.33)$) -- ($(b4.south west)+(-0.72,0)$);
+\node[font=\tiny\bfseries, text=black!55, rotate=90, anchor=south]
+  at ($(b2.north west)!0.5!(b4.south west)+(-0.82,0)$) {LLM-generated (Qwen2.5-72B)};
+
+\end{tikzpicture}
+\caption{A worked example from Ulysses-MTRAG as a session timeline: Turn~1 is a
+\emph{real} Ulysses-RFCorpus expert query (seed, blue) that carries expert
+relevance labels, and Turns~2--4 (gray) are LLM-generated follow-ups of
+prescribed types, conditioned on the full session history. For each turn we show
+the top retrieved bill and its LLM-judge relevance label (green: relevant;
+amber: partially relevant). Queries are reproduced verbatim in the original
+Portuguese, including typos present in the source corpus. The retrieved bill
+\emph{shifts} across turns and degrades to only \emph{partially relevant} by T4.}
 \label{fig:example}
 \end{figure}

@@ -1,0 +1,95 @@
+% ------------------------------------------------------------
+% Fig. (RQ2) — two labeled items from the released human-validation
+% sample (results/human_eval_sample.csv), drawn from the Fig.-1 session.
+% All texts verbatim from the release; same visual grammar as Fig. 1.
+% ------------------------------------------------------------
+\definecolor{seedblue}{HTML}{1565C0}
+\definecolor{seedfill}{HTML}{E9F1FB}
+\definecolor{genborder}{HTML}{9A9A9A}
+\definecolor{genfill}{HTML}{F4F4F4}
+\definecolor{relgreen}{HTML}{2E7D32}
+\definecolor{relgreenfill}{HTML}{EAF4EB}
+\definecolor{relamber}{HTML}{E5720A}
+\definecolor{relamberfill}{HTML}{FDF0E0}
+\definecolor{valind}{HTML}{4A5AA8}
+\definecolor{valindfill}{HTML}{EFF1FA}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  bubble/.style={rounded corners=3.5pt, inner xsep=5pt, inner ysep=4pt,
+                 text width=6.85cm, align=left},
+  seedbubble/.style={bubble, draw=seedblue, line width=0.9pt, fill=seedfill},
+  genbubble/.style={bubble, draw=genborder, line width=0.5pt, fill=genfill},
+  doccard/.style={rounded corners=2.5pt, inner xsep=5pt, inner ysep=4pt,
+                  text width=6.45cm, align=left, line width=0.8pt},
+  chip/.style={rounded corners=2.4pt, inner xsep=3.2pt, inner ysep=1.7pt,
+               font=\tiny\bfseries},
+  qarrow/.style={-{Stealth[length=1.5mm]}, black!45, line width=0.5pt},
+]
+
+% ---------- item 1 : T1 (seed) x PL 1927/2021, partially relevant ----------
+\node[seedbubble, anchor=north west] (b1) at (0.90, 0)
+  {\foreignlanguage{brazil}{``Cria\c{c}\~ao de fundo para preven\c{c}\~ao de
+   desastres naturais e e recupera\c{c}\~ao de seus efeitos, para apoio
+   financeiro aos estados e aos munic\'ipios afetados.''}};
+\node[chip, fill=seedblue, text=white, anchor=south west]
+  at ($(b1.north west)+(0.06,0.045)$) {T1 $\cdot$ seed};
+\node[chip, draw=seedblue, text=seedblue, fill=white, anchor=south west]
+  at ($(b1.north west)+(1.22,0.045)$) {real expert query};
+\node[doccard, draw=relamber, fill=relamberfill, anchor=north west]
+  (d1) at ($(b1.south west)+(0.62,-0.34)$)
+  {\textbf{PL 1927/2021} --- \emph{ementa:} \foreignlanguage{brazil}{``Prev\^e
+   que em caso de desastre ambiental os Estados e Munic\'ipios n\~ao produtores
+   de petr\'oleo e g\'as natural destinem 10\% dos royalties
+   recebidos\ldots''}};
+\node[chip, fill=relamber, text=white, anchor=south east]
+  at ($(d1.north east)+(-0.06,0.045)$) {LLM judge: partially relevant};
+\draw[qarrow] ($(b1.south)+(-1.6,0)$) -- ($(d1.north)+(-1.88,0)$)
+  node[font=\tiny\itshape, text=black!55, midway, right=2pt] {pooled \& judged};
+
+% ---------- item 2 : T2 (follow-up) x PL 8894/2017, relevant ----------
+\node[genbubble, anchor=north west] (b2) at ($(d1.south west)+(-0.62,-0.42)$)
+  {\foreignlanguage{brazil}{``Quais s\~ao os principais crit\'erios e mecanismos
+   de distribui\c{c}\~ao dos recursos do fundo para preven\c{c}\~ao de desastres
+   naturais e recupera\c{c}\~ao de seus efeitos?''}};
+\node[chip, fill=genborder, text=white, anchor=south west]
+  at ($(b2.north west)+(0.06,0.045)$) {T2 $\cdot$ follow-up $\cdot$ LLM-generated};
+\node[doccard, draw=relgreen, fill=relgreenfill, anchor=north west]
+  (d2) at ($(b2.south west)+(0.62,-0.34)$)
+  {\textbf{PL 8894/2017} --- \emph{ementa:} \foreignlanguage{brazil}{``Cria o
+   Fundo de Atendimento a Situa\c{c}\~oes de Emerg\^encia e de Calamidade
+   P\'ublica Decorrentes de Secas (Fasec) e disp\~oe sobre seus objetivos e sua
+   gest\~ao\ldots''}};
+\node[chip, fill=relgreen, text=white, anchor=south east]
+  at ($(d2.north east)+(-0.06,0.045)$) {LLM judge: relevant};
+\draw[qarrow] ($(b2.south)+(-1.6,0)$) -- ($(d2.north)+(-1.88,0)$);
+
+% ---------- user icons ----------
+\foreach \b in {b1,b2}{
+  \fill[black!40] ($(\b.west)+(-0.38,0.125)$) circle (0.095);
+  \fill[black!40] ($(\b.west)+(-0.38,-0.09)$) ellipse [x radius=0.16, y radius=0.12];
+}
+
+% ---------- human-validation band ----------
+\node[rounded corners=3pt, draw=valind, fill=valindfill, line width=0.7pt,
+      inner xsep=6pt, inner ysep=4.5pt, text width=7.55cm, align=left,
+      anchor=north west] (band) at ($(d2.south west)+(-0.62,-0.50)$)
+  {fixed \textbf{200-item sample}, stratified by turn $\times$ judge score
+   (50 per turn) $\rightarrow$ \textbf{two independent annotators}, same graded
+   scale, LLM label hidden $\rightarrow$ \textbf{human--LLM and inter-annotator
+   agreement}};
+\node[chip, fill=valind, text=white, anchor=south west]
+  at ($(band.north west)+(0.06,0.045)$) {human validation (released \& executed)};
+\draw[qarrow, dashed] ($(d2.south)+(0.6,0)$) -- ($(band.north)+(0.88,0)$);
+
+\end{tikzpicture}
+\caption{Two labeled items from the released human-validation sample, drawn from
+the same session as Fig.~\ref{fig:example} (queries shown in full): each pooled
+(query, bill) pair carries a graded LLM-judge label (amber: partially relevant;
+green: relevant). The bottom band summarizes the released and executed
+human-validation protocol (results in RQ2). Texts are verbatim Portuguese,
+including source-corpus typos.}
+\label{fig:sample}
+\end{figure}
