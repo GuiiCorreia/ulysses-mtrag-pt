@@ -16,6 +16,14 @@ It runs and compares these retrieval conditions on the SAME qrels:
                                                               (the "truncation" baseline)
   dense_chunked   BGE-M3 over <chunk-size passages of the full doc,
                   mapped back to parent docs                  (the proposed fix)
+  dense_excerpt500   BGE-M3 over txt_ementa = first 500 chars of the raw `text`
+                     field (the loader's documented fallback when ASSUNTO is
+                     absent). Added 2026-09-23: in the ufca-llms/normas-tcu
+                     release there is NO `ASSUNTO` column and `title` is the
+                     norm number ("28/2024"), so dense_summary above embedded
+                     the norm NUMBER, not a summary. New condition, new cache,
+                     never touches the existing ones.
+  dense_excerpt2000  same with the first 2,000 chars (the loader's title cap).
 
 Why three dense conditions: it disentangles the cause of the dense failure
 (summary-only vs. 8192-token truncation) and shows whether chunking fixes it.
@@ -45,7 +53,9 @@ BGE_M3_MODEL = "BAAI/bge-m3"
 CACHE_DIR    = Path("results/cache/chunking")
 OUT_PATH     = Path("results/chunking_normastcu.json")
 
-ALL_CONDITIONS = ["bm25", "dense_summary", "dense_fulldoc", "dense_chunked"]
+ALL_CONDITIONS = ["bm25", "dense_summary", "dense_fulldoc", "dense_chunked",
+                  "dense_excerpt500", "dense_excerpt2000"]
+DEFAULT_CONDITIONS = ALL_CONDITIONS[:4]      # unchanged default: the four ICTAI conditions
 
 
 # ---------------------------------------------------------------------------
@@ -85,6 +95,29 @@ def clone_with_ementa_as_fulltext(bills: dict[str, Bill]) -> dict[str, Bill]:
         out[name] = Bill(
             code=bill.code, sig_tipo=bill.sig_tipo, name=bill.name,
             txt_ementa=(bill.text or bill.txt_ementa),  # dense embeds this
+            em_tramitacao=bill.em_tramitacao, situacao=bill.situacao, text=bill.text,
+        )
+    return out
+
+
+def raw_text(bill: Bill) -> str:
+    """The raw `text` column as BEIRLoader received it. BEIRLoader stores
+    text = title + " " + text when a title exists (for normas-tcu the title is
+    the norm number), so strip that prefix to get back the `text` field itself."""
+    if bill.txt_ementa and bill.text.startswith(bill.txt_ementa + " "):
+        return bill.text[len(bill.txt_ementa) + 1:]
+    return bill.text
+
+
+def clone_with_excerpt_as_ementa(bills: dict[str, Bill], n_chars: int) -> dict[str, Bill]:
+    """Variant where dense embeds the first n_chars of the raw `text` field —
+    exactly the fallback BEIRLoader documents for docs without ASSUNTO
+    (txt_ementa = text[:500]). Everything else is left untouched."""
+    out: dict[str, Bill] = {}
+    for name, bill in bills.items():
+        out[name] = Bill(
+            code=bill.code, sig_tipo=bill.sig_tipo, name=bill.name,
+            txt_ementa=raw_text(bill)[:n_chars] or bill.txt_ementa,   # dense embeds this
             em_tramitacao=bill.em_tramitacao, situacao=bill.situacao, text=bill.text,
         )
     return out
@@ -139,7 +172,7 @@ def main():
     ap.add_argument("--top-docs", type=int, default=10, help="Docs to keep for metrics")
     ap.add_argument("--chunk-pool", type=int, default=100,
                     help="Top chunks retrieved before collapsing to docs")
-    ap.add_argument("--conditions", nargs="+", default=ALL_CONDITIONS,
+    ap.add_argument("--conditions", nargs="+", default=DEFAULT_CONDITIONS,
                     choices=ALL_CONDITIONS)
     ap.add_argument("--dense-batch", type=int, default=None,
                     help="Corpus-encoding batch size for the dense conditions (default: library "
@@ -202,6 +235,24 @@ def main():
             return doc_ranking_from_chunks(chunks, chunk_to_parent, args.top_docs)
         results["dense_chunked"] = score(queries, fn)
         print(f"  {results['dense_chunked']}")
+
+    # --- Dense: excerpt of the raw text (2026-09-23; see docstring) -------
+    for cond, n_chars in (("dense_excerpt500", 500), ("dense_excerpt2000", 2000)):
+        if cond in args.conditions:
+            print(f"\n[{cond}] embedding txt_ementa = first {n_chars} chars of the raw text field ...")
+            ex_bills = clone_with_excerpt_as_ementa(bills, n_chars)
+            sample = list(ex_bills.values())[:3]
+            for b in sample:
+                print(f"    {b.name!r} -> {b.txt_ementa[:120]!r}... (len={len(b.txt_ementa)})")
+            n_short = sum(1 for b in ex_bills.values() if len(b.txt_ementa) < 20)
+            print(f"    embedded texts < 20 chars: {n_short} / {len(ex_bills):,}")
+            ret = DenseRetriever(ex_bills, model_name=BGE_M3_MODEL, batch_size=args.dense_batch)
+            ret.build_index(cache_path=CACHE_DIR / f"{cond}.pkl")
+            fn = lambda q, ret=ret: [r.bill.name for r in ret.retrieve(q.text, top_k=args.top_docs)]
+            results[cond] = score(queries, fn)
+            results[cond]["embedded_text"] = f"raw text[:{n_chars}]"
+            results[cond]["n_embedded_lt20"] = n_short
+            print(f"  {results[cond]}")
 
     # --- Summary table ----------------------------------------------------
     print(f"\n{'='*70}\nRESULTS  (NormasTCU, n={len(queries)} queries)\n{'='*70}")

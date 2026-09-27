@@ -1,6 +1,7 @@
-"""Generate the ICTAI paper figures (vector PDF).
-    uv run python plot_paper_figures.py
-Outputs into ../paper_ictai/: fig_retrieval_turns.pdf, fig_generation_turns.pdf
+"""Generate the ICTAI paper figures (vector PDF, TrueType fonts).
+    uv run python plot_paper_figures.py                       # camera-ready Fig. 2 and Fig. 4
+    uv run python plot_paper_figures.py results/mtrag_gen.json _v1   # legacy judge protocol (v1)
+Outputs into paper/: fig_retrieval_turns.pdf (Fig. 2) and fig_generation_turns{SUFFIX}.pdf (Fig. 4).
 """
 import json
 from pathlib import Path
@@ -8,7 +9,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-OUT = Path(__file__).resolve().parent.parent / "paper_ictai"
+OUT = Path(__file__).resolve().parent / "paper"
+OUT.mkdir(exist_ok=True)
 plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42,  # TrueType (IEEE PDF checker rejects Type 3)
                      "font.size": 8, "axes.grid": True, "grid.alpha": 0.3,
                      "lines.linewidth": 1.3, "lines.markersize": 3.5})
@@ -38,11 +40,11 @@ print("wrote", OUT / "fig_retrieval_turns.pdf")
 # ---- Fig 2: generation faithfulness per turn, by model ----
 # Optional overrides (additive): plot_paper_figures.py [GEN_JSON] [OUTPUT_SUFFIX]
 import sys as _sys
-_GEN = _sys.argv[1] if len(_sys.argv) > 1 else "results/mtrag_gen.json"
+_GEN = _sys.argv[1] if len(_sys.argv) > 1 else "results/mtrag_gen_v2_r1.json"   # judge protocol v2, round 1 (the paper)
 _SUF = _sys.argv[2] if len(_sys.argv) > 2 else ""
 gen = json.load(open(_GEN, encoding="utf-8"))["results"]
 name = {"qwen/qwen3-8b": "Qwen3-8B", "qwen/qwen-2.5-7b-instruct": "Qwen2.5-7B",
-        "microsoft/phi-4": "Phi-4", "mistralai/ministral-8b-2512": "Ministral-8B",
+        "microsoft/phi-4": "Phi-4", "mistralai/ministral-8b-2512": "Ministral-3-8B",
         "google/gemma-4-31B-it": "Gemma-4-31B"}
 mk = ["o", "s", "^", "D", "v"]
 fig, ax = plt.subplots(figsize=(3.4, 2.5))
@@ -54,8 +56,8 @@ for m in gen:
     ax.plot(turns, ys, marker=mk[i % len(mk)], label=name.get(m, m.split("/")[-1]))
     i += 1
 ax.set_xlabel("Turn"); ax.set_ylabel("Faithfulness"); ax.set_xticks(turns)
-ax.legend(frameon=False, fontsize=7, ncol=2)
-ax.set_ylim(0.65, 0.90)
+ax.legend(frameon=False, fontsize=7, ncol=2, loc="upper right")
+ax.set_ylim(0.74, 0.99)
 fig.tight_layout(pad=0.3)
 fig.savefig(OUT / f"fig_generation_turns{_SUF}.pdf"); plt.close(fig)
 print("wrote", OUT / f"fig_generation_turns{_SUF}.pdf", f"(from {_GEN})")

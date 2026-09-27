@@ -26,11 +26,12 @@ run_generate_mtrag.py               build the benchmark from the seed corpus
 run_eval_mtrag.py                   multi-turn retrieval: 4 context strategies x {BGE-M3, BM25}, pooled LLM judgments
 run_gen_eval_mtrag.py               generation: 5 SLMs + 72B oracle, 3 axes (judge protocol v2 by default)
 run_judge_v2.py                     re-judge cached generations with protocol v2 (independent rounds)
-run_chunking_normastcu.py           NormasTCU length-boundary study (Table I)
+run_chunking_normastcu.py           NormasTCU: what the single dense vector encodes (Table I)
 rebuild_bm25_t1_judgments.py        offline reconstruction of the BM25 T1 judgment dump (gated)
 analyze_*.py, compare_*.py          every statistic in the paper (see map below)
-gen_human_sample.py, human_eval_app.py, annotation_deploy/   human validation of the judge
-plot_paper_figures.py               Fig. 2 / Fig. 3 (TrueType fonts)
+gen_human_sample.py, human_eval_app.py, annotation_deploy/   human validation of the judge (collection)
+anonymize_annotations.py, analyze_human_validation.py        anonymized labels A1/A2 and the RQ2 numbers
+plot_paper_figures.py               Fig. 2 / Fig. 4 (TrueType fonts)
 paper/                              LaTeX source, bibliography, figures (main.tex = camera-ready)
 results/, results/cache/            metric outputs, judgment caches (raw judge replies for v2), contexts
 ```
@@ -39,14 +40,16 @@ results/, results/cache/            metric outputs, judgment caches (raw judge r
 
 | Paper element | Script | Artifact(s) |
 |---|---|---|
-| Table I — NormasTCU length boundary (bm25, dense_summary, dense_fulldoc, dense_chunked) | `run_chunking_normastcu.py` (`--out`, per-condition merge) | `results/chunking_normastcu_full.json` (bm25 0.3279 / dense_summary 0.0000 / dense_fulldoc 0.2889), `results/chunking_normastcu.json` (dense_chunked 0.3299) |
+| Table I — NormasTCU: BM25 on the full text; dense on the title field only, on a 2,000-character excerpt, on the truncated full text, and chunk-level (the 500-character excerpt is quoted in Sec. III) | `run_chunking_normastcu.py` (`--out`, per-condition merge; excerpts: `--conditions dense_excerpt500 dense_excerpt2000`) | `results/chunking_normastcu_full.json` (bm25 0.3279 / dense_summary 0.0000 / dense_fulldoc 0.2889), `results/chunking_normastcu_excerpt500.json` (dense_excerpt2000 0.3213 / dense_excerpt500 0.2755), `results/chunking_normastcu.json` (dense_chunked 0.3299) |
 | Table II — benchmark composition (turn / answer types) | `analyze_mtrag_dataset.py` | `results/ulysses_mtrag_100.json` |
 | Table III — multi-turn retrieval nDCG@10, 4 strategies × 2 retrievers | `run_eval_mtrag.py`, `analyze_bm25.py`, `analyze_significance_mtrag.py` | `results/mtrag_eval.json` (BGE-M3), `results/mtrag_eval_bm25.json` (BM25), caches `results/cache/judge_mtrag_eval*.json` |
 | RQ2 — judge vs expert labels (raw agreement, κ, PABAK, explicit subset) | `analyze_judge_subset.py`, `rebuild_bm25_t1_judgments.py`, `recompute_t1_agreement.py` | `results/mtrag_judgments.csv`, `results/mtrag_judgments_bm25.csv`, agreement blocks inside `mtrag_eval*.json` |
+| RQ2 — human validation of the judge (A1: 110 items, A2: 41; κ with bootstrap CIs, direction of disagreements) | `analyze_human_validation.py` | `results/human_eval_A1.csv`, `results/human_eval_A2.csv` (sample: `results/human_eval_sample.csv`) |
 | Table IV — generation (faithfulness v2, FANC, BERTScore, ROUGE-L) | `run_judge_v2.py` (protocol v2), `analyze_significance_mtrag.py`, `analyze_scale.py`, `compare_v2.py` | `results/mtrag_gen_v2_r1.json`, `results/mtrag_gen_v2_r2.json` (+ `.complete.json`), caches `results/cache/judge_faith_v2_r{1,2}.json`, `results/judge_rounds_v2_comparison.json` |
-| Fig. 1 — worked example | `gen_example_snippet.py` | `paper/example_snippet.tex` |
+| Fig. 1 — worked example (session `ulysses_mt_0001`) | hand-drawn TikZ; `gen_example_snippet.py` extracts its texts and labels into `paper/example_snippet_texts.tex` | `paper/example_snippet.tex` |
 | Fig. 2 — retrieval nDCG@10 by turn (dense / BM25) | `plot_paper_figures.py` | `paper/fig_retrieval_turns.pdf` |
-| Fig. 3 — generation faithfulness by turn | `plot_paper_figures.py results/mtrag_gen_v2_r1.json _v2r1` | `paper/fig_generation_turns_v2r1.pdf` |
+| Fig. 3 — two labeled items from the human-validation sample | hand-drawn TikZ from `results/human_eval_sample.csv` | `paper/example_turn.tex` |
+| Fig. 4 — generation faithfulness by turn | `plot_paper_figures.py` (default input `results/mtrag_gen_v2_r1.json`) | `paper/fig_generation_turns.pdf` |
 
 Original-protocol generation outputs are kept for provenance:
 `results/mtrag_gen.json` (round 1) and `results/mtrag_gen_round2.json` (round 2).
@@ -91,14 +94,23 @@ uv run python run_judge_v2.py --round 1 && uv run python run_judge_v2.py --round
 uv run python analyze_significance_mtrag.py results/mtrag_eval.json results/mtrag_gen_v2_r1.complete.json
 uv run python analyze_scale.py results/mtrag_gen_v2_r1.complete.json
 uv run python analyze_bm25.py && uv run python analyze_judge_subset.py && uv run python compare_v2.py
-uv run python plot_paper_figures.py results/mtrag_gen_v2_r1.json _v2r1
+uv run python analyze_human_validation.py
+uv run python plot_paper_figures.py          # regenerates paper/fig_retrieval_turns.pdf and paper/fig_generation_turns.pdf
+                                             # (camera-ready files built with matplotlib 3.10.9; other versions draw the same
+                                             #  curves with minor layout differences)
 ```
 
 ## Human validation of the LLM judge
 
 `gen_human_sample.py` builds the fixed 200-item sample (balanced by turn × judge score);
 `human_eval_app.py` (deployable with `annotation_deploy/`) collects annotations; annotator
-files are anonymized to `A1`, `A2` with `anonymize_annotations.py` before release.
+files are anonymized to `A1`, `A2` with `anonymize_annotations.py` before release (the script
+aborts if any annotator name survives in the output). The released labels are
+`results/human_eval_A1.csv` (110 items) and `results/human_eval_A2.csv` (41 of them, doubly
+annotated); `analyze_human_validation.py` reproduces the RQ2 numbers: judge × A1 raw agreement
+0.86, κ 0.70 (95% CI 0.55–0.83); judge × A2 0.80, κ 0.60; A1 × A2 0.88, κ 0.75 (0.54–0.95);
+12 of A1's 15 disagreements are documents a human rates at least partially relevant and the
+judge irrelevant.
 
 ## Data and release form
 

@@ -12,7 +12,7 @@ IDs (A1, A2, ...) before release. This script:
   3. writes results/human_eval_A1.csv, human_eval_A2.csv, ... with the 'annotator'
      column replaced by the alias;
   4. GATE: re-scans every output for every real name (case-insensitive, whole
-     name and each token >= 4 chars) and aborts if any survives.
+     name and each token >= 4 chars, matched as whole words) and aborts if any survives.
 
 Real names are never printed. An optional private mapping can be saved with
 --map-out (keep it OUT of git; *.private.json is gitignored).
@@ -88,7 +88,9 @@ def main() -> int:
     for out, _, _ in written:
         blob = open(out, encoding="utf-8").read().lower()
         for t in tokens:
-            if t and t in blob:
+            # whole-word match (letters/digits as word characters; '_' and punctuation count as
+            # boundaries), so short names do not trip on ordinary words that contain them
+            if t and re.search(r"(?<![^\W_])" + re.escape(t) + r"(?![^\W_])", blob):
                 leaks += 1
     if leaks:
         for out, _, _ in written:

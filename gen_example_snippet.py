@@ -1,4 +1,9 @@
-"""Build a LaTeX worked-example block for conv 1, UTF-8 preserved."""
+"""Extract the texts behind Fig. 1 (session ulysses_mt_0001, conv index 1): each turn's query,
+turn type and top-judged bill with its LLM-judge label, as a plain LaTeX block (UTF-8 preserved).
+The camera-ready Fig. 1 (paper/example_snippet.tex) is a hand-drawn TikZ rendering of these texts;
+this script writes paper/example_snippet_texts.tex and never overwrites the figure.
+    uv run python gen_example_snippet.py
+"""
 import json, csv
 csv.field_size_limit(10**7)
 convs = json.load(open("results/ulysses_mtrag_100.json", encoding="utf-8"))["conversations"]
@@ -52,5 +57,5 @@ lines += [
     r"\label{fig:example}",
     r"\end{figure}",
 ]
-open("../paper_ictai/example_snippet.tex", "w", encoding="utf-8").write("\n".join(lines))
+open("paper/example_snippet_texts.tex", "w", encoding="utf-8").write("\n".join(lines))
 print("\n".join(lines))
