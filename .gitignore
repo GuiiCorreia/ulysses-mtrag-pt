@@ -28,6 +28,11 @@ dist/
 # Collected human annotations (keep out of the repo)
 results/human_eval_[!s]*.csv
 annotation_deploy/annotations/
+# ... except the anonymized files written by anonymize_annotations.py (A1, A2, ...)
+!results/human_eval_A[0-9].csv
+
+# Runtime logs (created by mestrado.config)
+logs/
 
 # OS / editor
 .DS_Store

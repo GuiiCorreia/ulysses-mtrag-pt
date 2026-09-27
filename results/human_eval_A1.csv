@@ -1,0 +1,114 @@
+conv_idx,turn,doc_name,query,human_score,llm_score,annotator
+91,4,PL 541/2007,Compare as justificativas apresentadas para a instituição do trabalho obrigatório e forçado de presos que enfatizam a reabilitação do preso com aquelas que enfatizam a compensação por custos de manutenção do sistema prisional.,0.5,0.5,A1
+92,1,PL 7720/2010,Estudo sobre racismo institucional e estrutural. ,0.5,1.0,A1
+39,1,PEC 444/2014,"PL que torne o Serviço Militar facultativo. 
+",0.0,0.0,A1
+95,3,INC 5304/2009,"Quais são os impactos potenciais da proposta sobre os direitos territoriais dos povos indígenas, especialmente em relação à segurança jurídica e ao cumprimento do princípio constitucional da proteção aos povos indígenas?",0.0,0.0,A1
+87,2,INC 1910/2008,Quais seriam os principais desafios e impactos econômicos decorrentes da implementação dessas propostas?,0.5,0.5,A1
+62,3,PL 2138/2003,Quais são as principais barreiras tecnológicas e de infraestrutura que podem impedir a implementação efetiva da tele educação física no Brasil?,0.0,0.0,A1
+15,2,INC 189/2019,Quais são as implicações organizacionais e estruturais da implementação desses postos de oficiais-generais nas instituições mencionadas?,0.0,0.0,A1
+19,2,INC 2698/2012,Quais são os atuais critérios e condições para a concessão da licença-paternidade no Brasil?,0.5,0.5,A1
+41,3,PL 190/2003,Gostaria de focar inicialmente em proposições legislativas que tratam de incentivos fiscais para a exportação de commodities. Existe algum projeto em tramitação ou recém-aprovado que aborde esse tema?,0.5,0.5,A1
+26,2,PL 1261/2019,Quais são as principais medidas previstas no projeto de lei para o descarte seguro de medicamentos vencidos?,0.5,1.0,A1
+10,3,PDC 494/2011,"Quais são as principais implicações sociais e psicológicas da redução da maioridade penal para menores de 18 anos, segundo os estudos e pesquisas recentes?",0.5,0.5,A1
+83,1,PL 6011/2009,Estabelece o Dia Nacional do Contador.,0.0,0.0,A1
+81,3,PL 648/2003,"Esses critérios e requisitos são uniformemente aplicados em todos os estados, ou há variações regionais?",0.5,1.0,A1
+94,4,INC 2044/2016,Poderia fornecer exemplos de proposições legislativas que tratam especificamente de tecnologias assistivas para pessoas com deficiência motora?,1.0,1.0,A1
+40,3,PL 1991/2011,"Considerando a aplicação em nível federal, quais seriam os impactos na estrutura administrativa e no processo de nomeações, bem como os desafios de implementação e fiscalização desta proposição?",0.5,0.5,A1
+66,4,INC 125/2019,Compare os principais argumentos apresentados em proposições legislativas que visam proibir a venda de refrigerantes nas escolas públicas e nas escolas privadas de 2020 em diante.,0.0,0.0,A1
+36,3,PL 7743/2014,Quais são os valores específicos da remuneração mínima dos agentes comunitários de saúde atualmente previstos na Constituição?,0.5,0.5,A1
+42,2,PRC 201/2013,Quais foram os principais argumentos apresentados pelos defensores e detratores dessas proposições?,0.5,0.0,A1
+72,2,PL 2403/2021,Quais são os principais argumentos apresentados nas proposições legislativas que visam conferir ao município de Luziânia o título de Capital Nacional do Café do Cerrado?,0.0,0.0,A1
+77,4,PLP 150/2012,"Podemos detalhar como os limites de despesas são ajustados ao longo do tempo para os entes federativos, especialmente considerando fatores como inflação e variações na receita?",0.5,0.5,A1
+48,2,PL 2425/2019,Qual é o percentual de desconto proposto para as pessoas que tenham feito cirurgia de redução de estômago?,0.5,0.5,A1
+75,2,PEC 50/2003,Compare os efeitos potenciais do voto facultativo sobre a participação eleitoral e a qualidade das campanhas políticas.,0.0,0.0,A1
+75,4,INC 18/2019,"Quais são os principais achados dos estudos empíricos sobre o impacto do voto facultativo na representatividade política, especialmente em relação à diversidade de gênero e raça?",0.0,0.0,A1
+58,1,INC 493/2015,"Cria carreira agente de trânsito.
+",0.5,1.0,A1
+13,3,INC 646/2007,"Gostaria de saber se a proposta de projeto de lei também contemplará medidas preventivas e punitivas específicas, além da proibição do assédio moral?",0.5,0.5,A1
+44,1,PL 857/2011,defesa da concorrência,0.0,0.0,A1
+30,4,PL 414/2007,"Compare os impactos econômicos e sociais do reajuste das tarifas de energia elétrica em Pernambuco para as famílias de baixa renda e para as empresas de pequeno porte, conforme analisado no projeto de decreto legislativo.",0.5,0.5,A1
+46,1,INC 2898/2012,Pl para facilitar o financiamento imobiliário para famílias ,0.5,1.0,A1
+18,4,PL 2792/2020,"Essas penalidades podem ser aplicadas de forma retroativa, ou somente a partir da vigência da lei?",0.0,0.5,A1
+42,1,PL 3762/2004,liquidação extrajudicial,0.0,0.5,A1
+13,3,INC 6173/2014,"Gostaria de saber se a proposta de projeto de lei também contemplará medidas preventivas e punitivas específicas, além da proibição do assédio moral?",0.5,1.0,A1
+43,2,PL 6962/2010,Qual aspecto específico da Lei das Sociedades Anônimas você deseja explorar em sua pesquisa?,0.5,1.0,A1
+69,2,PL 31/2007,Quais são as principais diferenças entre a regularização fundiária de terras da União destinadas à agricultura familiar e aquelas destinadas a uso comercial?,0.5,0.0,A1
+85,4,PL 3022/2019,Quais são as diferenças específicas nas condições de contrapartida e no monitoramento da aplicação dos recursos entre a prestação de auxílio financeiro para entes federativos em situação de emergência e os em situação de calamidade pública?,0.0,0.5,A1
+54,1,INC 2415/2016,Gostaria que fosse analisada a viabilidade da apresentação de um projeto para incluir a totalidade do Estado do Espírito Santo no âmbito de atuação da Superintendência do Desenvolvimento do Nordeste,0.5,0.0,A1
+69,2,INC 72/2019,Quais são as principais diferenças entre a regularização fundiária de terras da União destinadas à agricultura familiar e aquelas destinadas a uso comercial?,0.5,0.0,A1
+74,1,INC 2110/2016,Elaborar projeto de lei adotando as seguintes providências: prorrogação de dívidas de crédito rural contratadas por agricultores familiares entre 2020 e 2021.,0.5,0.5,A1
+35,2,INC 3561/2013,Compare os custos e benefícios da incorporação do medicamento Zolgensma com os de outros tratamentos disponíveis para a atrofia muscular espinhal no SUS.,0.0,0.0,A1
+25,2,PL 2854/2020,Quais proposições legislativas mais recentes tratam da questão de impedir a retirada de conteúdo da internet sem ordem judicial?,0.5,0.5,A1
+50,1,INC 4947/2018,projeto de lei para limitar o juros do cheque especial,0.5,1.0,A1
+20,3,PLP 95/2019,Compare as regras estabelecidas pela Lei 10.931/2004 e pelo Decreto 6.538/2008 em relação aos limites e controles dos juros praticados nos cartões de crédito no Brasil.,0.5,1.0,A1
+91,2,PL 541/2007,Quais são as principais justificativas apresentadas nas proposições legislativas para a instituição do trabalho obrigatório e forçado de presos?,0.5,0.5,A1
+7,1,INC 604/2019,Para criar uma lei geral dos conselhos de fiscalização profissional ,0.5,0.5,A1
+58,3,PEC 55/2011,Quais são as principais diferenças nas atribuições e competências de um agente de trânsito municipal em comparação com um agente de trânsito estadual?,0.5,0.5,A1
+67,1,INC 6395/2014,Solicito elaborar proposição para revogar a reforma trabalhista.,0.0,0.0,A1
+49,2,PL 1371/2011,"Quais são os aspectos legais e de segurança que devem ser considerados ao estabelecer uma identificação para motociclistas e passageiros, seja no capacete, colete ou outro acessório?",0.5,1.0,A1
+75,3,PEC 18/2003,Quais estudos empíricos podem ser citados para avaliar o impacto do voto facultativo na qualidade das campanhas políticas e na participação eleitoral?,0.0,0.0,A1
+25,4,PL 8221/2017,Compare os argumentos apresentados nas proposições legislativas que visam impedir a retirada de conteúdo da internet sem ordem judicial com os argumentos utilizados em proposições que defendem a moderação de conteúdo pelas plataformas.,1.0,0.5,A1
+16,1,PL 8445/2017,Vedar a oferta de cursos superiores na modalidade EAD para a área de saúde,0.5,0.5,A1
+89,4,PL 1358/2019,Quais são os principais tipos de gastos com animais que essas proposições legislativas pretendem permitir deduzir no Imposto de Renda?,0.5,1.0,A1
+33,3,INC 1098/2020,Esses aspectos propostos para alteração já encontram alguma resistência ou apoio significativo entre os parlamentares?,0.5,0.0,A1
+49,1,INC 3271/2012,"Elaborar projeto de lei para estabelecer identificação do motociclista e passageiro.
+Pode ser no capacete, colete ou outro acessório.",0.5,0.5,A1
+48,3,PL 2425/2019,Esses descontos seriam aplicados apenas a restaurantes específicos ou a todos os estabelecimentos que optarem por aderir a essa iniciativa?,0.5,0.5,A1
+59,4,INC 849/2015,Quais ações específicas estão sendo implementadas para melhorar o processo de seleção e a integração de pessoas com deficiência no serviço público?,0.5,1.0,A1
+49,2,PL 2359/2011,"Quais são os aspectos legais e de segurança que devem ser considerados ao estabelecer uma identificação para motociclistas e passageiros, seja no capacete, colete ou outro acessório?",1.0,1.0,A1
+94,3,INC 4136/2017,"Você poderia especificar se está interessado em tecnologias assistivas para deficiências específicas, como visual, auditiva, motora ou intelectual, ou se prefere uma abordagem geral?",0.5,1.0,A1
+95,3,PEC 257/2004,"Quais são os impactos potenciais da proposta sobre os direitos territoriais dos povos indígenas, especialmente em relação à segurança jurídica e ao cumprimento do princípio constitucional da proteção aos povos indígenas?",0.5,1.0,A1
+41,2,PL 10011/2018,"Poderia esclarecer se está interessado especificamente em proposições legislativas que tratam de incentivos fiscais, regulamentação ou políticas comerciais relacionadas à exportação de commodities?",0.5,1.0,A1
+12,3,INC 2825/2016,Quais são as proposições legislativas mais recentes de 2020 em diante que condicionam a matrícula em escola pública à vacinação atualizada das crianças?,0.0,0.0,A1
+4,4,PL 9840/2018,Como a implementação dessas medidas afetará a estrutura de custos e a operacionalização dos sistemas de loteria da Caixa Econômica Federal?,0.5,0.5,A1
+15,2,PL 4184/2021,Quais são as implicações organizacionais e estruturais da implementação desses postos de oficiais-generais nas instituições mencionadas?,0.5,0.5,A1
+34,3,PFC 2/2021,"Quais aspectos específicos da implementação da IoT nos outros países você considera mais relevantes para a elaboração da legislação brasileira, como incentivos fiscais, regulamentação de segurança ou promoção de parcerias público-privadas?",0.0,0.0,A1
+14,1,PL 495/2019,Dar anistia aos estudantes para as dívidas do Fies.,0.5,1.0,A1
+7,4,INC 2940/2016 => PL 5179/2016,Quais foram os principais argumentos e contrapontos apresentados nas discussões das propostas que tiveram maior destaque para a criação de uma lei geral dos conselhos de fiscalização profissional?,0.5,0.5,A1
+84,3,INC 5089/2013,Compare os impactos do contingenciamento de recursos no orçamento federal entre os Ministérios da Saúde e da Educação. Quais setores são mais afetados e por quê?,0.0,0.0,A1
+32,3,INC 1100/2020,"Considerando essas objeções, quais medidas poderiam ser implementadas para mitigar os impactos negativos da prática 'pesque e solte' nas unidades de conservação de proteção integral?",0.0,0.0,A1
+59,1,INC 1276/2021,vagas pessoas com deficiência em cargos públicos,0.5,1.0,A1
+30,4,PDC 10/2011,"Compare os impactos econômicos e sociais do reajuste das tarifas de energia elétrica em Pernambuco para as famílias de baixa renda e para as empresas de pequeno porte, conforme analisado no projeto de decreto legislativo.",0.5,0.0,A1
+71,1,INC 1357/2022,Solicita proposição que proíba Petrobras de praticar PPI,0.5,1.0,A1
+67,1,INC 5380/2018,Solicito elaborar proposição para revogar a reforma trabalhista.,0.0,0.0,A1
+73,4,PL 7597/2010,Há alguma justificativa específica na proposta legislativa para a diferença de descontos entre esses grupos?,0.0,0.0,A1
+27,3,PL 2920/2015,Quais foram os principais argumentos favoráveis e contrários à desaposentação e ao recálculo da aposentadoria debatidos nas comissões da Câmara desde 2020?,1.0,1.0,A1
+81,4,PL 566/2020,Quais são os principais desafios na implementação e fiscalização dos critérios e requisitos para a meia-entrada nos cinemas para pessoas com autismo?,0.5,0.0,A1
+58,4,PEC 64/2011,"Quais são as principais diferenças nas atribuições e competências de um agente de trânsito municipal em comparação com um agente de trânsito estadual, considerando proposições legislativas mais recentes?",0.5,0.0,A1
+74,1,INC 2099/2016,Elaborar projeto de lei adotando as seguintes providências: prorrogação de dívidas de crédito rural contratadas por agricultores familiares entre 2020 e 2021.,0.5,0.5,A1
+51,2,INC 5868/2014,Gostaria de esclarecer se a consulta inicial se refere especificamente a proposições legislativas que instituam a gratuidade total ou se também inclui aquelas que preveem descontos parciais ou isenções condicionais para a obtenção da CNH por pessoas de baixa renda?,0.0,0.0,A1
+22,4,PL 2357/2020,Quais foram os principais debates e conclusões no âmbito da Câmara dos Deputados sobre essas proposições?,0.5,1.0,A1
+6,4,PL 901/2019,Quais mecanismos de fiscalização e punição foram estabelecidos nas proposições legislativas mais recentes para garantir a segurança dos torcedores nos estádios?,1.0,1.0,A1
+4,1,PL 622/2007,"Elaborar um projeto de lei que o apostador de jogos em loterias, deverá fornecer o seu CPF e telefone ou e-mail, de modo que seja avisado pelos canais oficias, em resgatar o seu prêmio, no prazo estipulado de 90 dias. Neste caso, ele não precisará apresentar o original, se fornecido o CPF no momento da aposta. Ficando dessa forma, o prêmio nominal ao seu ganhador.",1.0,1.0,A1
+65,3,PL 6775/2016,"No âmbito dos requisitos legais mencionados, poderia especificar quais são os principais critérios técnicos e administrativos necessários para a criação de um fundo especial?",0.5,1.0,A1
+77,2,PLP 209/2015,Quais são os principais critérios e indicadores utilizados para estabelecer os limites de despesas na Lei de Responsabilidade Fiscal?,0.5,1.0,A1
+48,2,PL 5619/2013,Qual é o percentual de desconto proposto para as pessoas que tenham feito cirurgia de redução de estômago?,0.0,0.0,A1
+75,2,PEC 314/2013,Compare os efeitos potenciais do voto facultativo sobre a participação eleitoral e a qualidade das campanhas políticas.,0.5,0.5,A1
+3,1,PLP 214/2020,altera a emissão e distribuição de valores mobiliários no mercado.,0.0,0.0,A1
+91,2,PL 5054/2019,Quais são as principais justificativas apresentadas nas proposições legislativas para a instituição do trabalho obrigatório e forçado de presos?,0.5,0.5,A1
+23,3,PL 6770/2013,Quais seriam os principais benefícios esperados com a implementação desses incentivos?,0.5,1.0,A1
+72,1,PL 77/2020,Conferir ao município de Luziânia o título de Capital Nacional do Café do Cerrado. ,0.0,0.0,A1
+52,3,INC 283/2015,Quais são os principais estudos ou pesquisas citados nas proposições legislativas que apoiam ou refutam a eficácia da educação moral e cívica na formação dos estudantes?,0.5,0.0,A1
+70,1,PL 1010/2021,"Projeto de Lei para barreiras sanitárias em terras indígenas, em razão da pandemia covid19. ",0.0,0.0,A1
+62,1,INC 1306/2022,regulamentar a tele educação física,0.0,0.0,A1
+43,4,PL 5516/2019,"Quais são as principais alterações na governança corporativa previstas nas proposições legislativas aprovadas nos últimos cinco anos, no âmbito da Lei das Sociedades Anônimas?",0.5,0.5,A1
+10,2,PEC 223/2012,Quais são os principais argumentos a favor e contra a redução da maioridade penal para menos de 18 anos?,0.5,1.0,A1
+16,3,PL 2394/2020,Qual é a amplitude do termo 'área de saúde' utilizado na proposição? Inclui todas as profissões regulamentadas pelo Ministério da Saúde ou há uma definição mais específica?,1.0,1.0,A1
+13,1,PL 33/2007,Solicitamos a elaboração de projeto de lei proibindo o assédio moral nas relações de trabalho.,0.5,1.0,A1
+44,1,PL 11275/2018,defesa da concorrência,0.5,1.0,A1
+87,2,INC 2811/2016,Quais seriam os principais desafios e impactos econômicos decorrentes da implementação dessas propostas?,1.0,0.0,A1
+78,2,PL 759/2019,Poderia esclarecer se a proposta de reintroduzir o período de carência de 18 meses se aplica apenas aos contratos novos ou também aos contratos já existentes?,1.0,0.5,A1
+44,2,PL 7115/2014,Quais são os principais instrumentos legais e regulatórios utilizados no Brasil para a defesa da concorrência?,0.0,0.0,A1
+69,3,INC 72/2019,Quais são os principais critérios e requisitos legais estabelecidos para a regularização fundiária de terras da União destinadas à agricultura familiar?,1.0,0.5,A1
+77,1,PLP 25/2011,Limites de despesas da lei de responsabilidade fiscal,0.5,1.0,A1
+22,4,INC 965/2020,Quais foram os principais debates e conclusões no âmbito da Câmara dos Deputados sobre essas proposições?,0.5,0.0,A1
+55,4,PL 5129/2013,Você poderia especificar quais regiões urbanas e rurais foram consideradas na comparação dos impactos econômicos e sociais da permissão para estrangeiros comprarem terras no Brasil?,0.0,0.0,A1
+69,1,PL 413/2020,Projeto de Lei para regularização fundiária de terras da União. ,1.0,1.0,A1
+97,4,INC 5347/2005,"Considerando as proposições legislativas mais recentes, quais são os principais argumentos apresentados pelos proponentes em favor da responsabilidade da empresa no pagamento do auxílio doença?",0.0,0.0,A1
+7,3,INC 2940/2016 => PL 5179/2016,Há alguma proposta específica que tenha avançado significativamente no processo legislativo ou que tenha recebido maior destaque na discussão sobre a criação de uma lei geral para os conselhos de fiscalização profissional?,0.5,0.5,A1
+67,4,PL 1382/2021,"Quais são os principais pontos da reforma trabalhista que as proposições mais recentes (a partir de 2020) buscam revogar, e há alguma proposição específica que destaque nesse sentido?",1.0,1.0,A1
+23,3,PL 6622/2016,Quais seriam os principais benefícios esperados com a implementação desses incentivos?,0.5,1.0,A1
+2,3,PL 6743/2002,"Quais são os possíveis impactos orçamentários e fiscais de se excetuar a saúde e a educação do limite de gastos com pessoal, conforme previsto na legislação atual?",0.5,0.0,A1
+25,4,PL 4120/2020,Compare os argumentos apresentados nas proposições legislativas que visam impedir a retirada de conteúdo da internet sem ordem judicial com os argumentos utilizados em proposições que defendem a moderação de conteúdo pelas plataformas.,0.5,0.5,A1
+3,3,PL 4857/2016,Quais são as principais mudanças propostas nas regras de registro e divulgação de informações para a emissão e distribuição de valores mobiliários no mercado?,0.0,0.0,A1
